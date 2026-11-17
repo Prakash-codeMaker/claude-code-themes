@@ -1,16 +1,27 @@
 # Claude Code Themes
 
-A studio for Claude Code themes: design one, preview it live, install it. One command, no other repos.
+A studio for Claude Code themes: design one, preview it live, install it. Animated backdrops for the desktop app and colour themes for the terminal. One command, no other repos.
 
 ```
 npx github:anhnt256/claude-code-themes
 ```
 
-That opens the Studio in your browser. **Install** writes the theme straight into Claude Code; run `/theme` to pick it.
+That opens the Studio in your browser. **Install** puts what you made straight into Claude Code.
 
-**[Try the Studio online →](https://anhnt256.github.io/claude-code-themes/studio.html)** · **[Browse the gallery →](https://anhnt256.github.io/claude-code-themes/)**
+**[Make a backdrop →](https://anhnt256.github.io/claude-code-themes/backdrop.html)** · **[Make a terminal theme →](https://anhnt256.github.io/claude-code-themes/studio.html)** · **[Browse the gallery →](https://anhnt256.github.io/claude-code-themes/)**
 
-## Studio
+## Backdrops for the desktop app
+
+An animated scene behind the conversation in the Code tab: a koi pond, falling petals, an aurora, fireflies, stars, snow or rain.
+
+- **Pick a scene and a colour**; the whole picture is painted from that one colour, dark or light
+- **Shuffle** for a new arrangement; set how much is in it and how fast it moves
+- **See it behind the app** as you change it, with the panel blur and opacity you choose
+- **Install** builds it as a plugin on your machine and adds it to Claude Code; restart the desktop app to see it
+
+Needs Claude Code 2.1.323 or newer. `/<name> off` turns a backdrop off.
+
+## Terminal themes
 
 - **Start anywhere**: a theme from the gallery, one seed colour, a random palette, or a theme file you drop in
 - **Every colour**: all 62 tokens, grouped and searchable; click anything in the preview to find its colour
@@ -19,13 +30,14 @@ That opens the Studio in your browser. **Install** writes the theme straight int
 - **Undo, redo, share**: the link carries the whole theme
 - **Install** in one click when run locally; online it gives you one command to paste
 
-## Terminal
+## Command line
 
 ```
 npx github:anhnt256/claude-code-themes list
 npx github:anhnt256/claude-code-themes preview dracula
 npx github:anhnt256/claude-code-themes install dracula
 npx github:anhnt256/claude-code-themes new "#3b82f6" --name "Blue Sky" --install
+npx github:anhnt256/claude-code-themes new "#e8743b" --scene koi --name "My Pond" --install
 npx github:anhnt256/claude-code-themes check my-theme.json
 ```
 
@@ -84,7 +96,7 @@ Make it in the Studio, save the file into [`themes/`](themes) and open a pull re
 
 ## Credits
 
-The Studio and CLI are written for this repo. They were shaped by studying three MIT projects: [claude-code-theme-generator](https://github.com/denesszabo/claude-code-theme-generator) by denesszabo, [claude-code-theme-editor](https://github.com/FEIF-L/claude-code-theme-editor) by FEIF-L and [claude-code-theme-designer](https://github.com/aleslanger/claude-code-theme-designer) by aleslanger, whose capture of Claude Code's base colours [`docs/tokens.json`](docs/tokens.json) builds on. Much of the desktop list and the previews in [`docs/previews/`](docs/previews) come from [buildwithclaude](https://github.com/davepoon/buildwithclaude) (MIT); other previews load from their authors' repos.
+The Studio and CLI are written for this repo. The backdrop plugins follow the mod recipe in Anthropic's docs and its theme-examples plugin. The terminal side was shaped by studying three MIT projects: [claude-code-theme-generator](https://github.com/denesszabo/claude-code-theme-generator) by denesszabo, [claude-code-theme-editor](https://github.com/FEIF-L/claude-code-theme-editor) by FEIF-L and [claude-code-theme-designer](https://github.com/aleslanger/claude-code-theme-designer) by aleslanger, whose capture of Claude Code's base colours [`docs/tokens.json`](docs/tokens.json) builds on. Much of the desktop list and the previews in [`docs/previews/`](docs/previews) come from [buildwithclaude](https://github.com/davepoon/buildwithclaude) (MIT); other previews load from their authors' repos.
 
 ## Licence
 

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backdrop Studio · Claude Code Themes</title>
+<meta name="description" content="Make an animated backdrop for the Claude desktop app and install it.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='14' fill='%23d77757'>✻</text></svg>">
+<style>
+:root { --page: #fff; --ink: #111; --dim: #6b6b6b; --line: #e6e6e6; --field: #f5f5f4; --accent: #d77757; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --page: #0e0e10; --ink: #ededed; --dim: #8b8b8b; --line: #26262a; --field: #18181b; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+button, select, .btn { cursor: pointer; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; background: none; text-decoration: none; white-space: nowrap; }
+button:hover, select:hover, .btn:hover { border-color: var(--dim); }
+button.main { background: var(--ink); color: var(--page); border-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+input[type=text] { background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; min-width: 0; }
+input[type=color] { width: 30px; height: 30px; padding: 0; border: 1px solid var(--line); border-radius: 8px; background: none; cursor: pointer; flex: none; }
+input[type=range] { width: 120px; accent-color: var(--accent); }
+
+header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+header .home { text-decoration: none; font-weight: 700; font-size: 16px; margin-right: 4px; }
+header .home span { color: var(--accent); }
+#name { font-weight: 600; width: 180px; }
+.gap { flex: 1; }
+main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 64px; }
+.scenes { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.scenes button { padding: 0; overflow: hidden; border-radius: 10px; text-align: left; }
+.scenes button[aria-pressed=true] { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+.scenes .thumb { display: block; aspect-ratio: 16 / 10; overflow: hidden; }
+.scenes .thumb svg { display: block; width: 100%; height: 100%; }
+.scenes b { display: block; padding: 6px 10px; font-weight: 500; font-size: 13px; }
+.app { position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.app > .back { position: absolute; inset: 0; }
+.app > .back svg { display: block; width: 100%; height: 100%; }
+.app .side, .app .chat { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--tint) calc(var(--glass) * 100%), transparent); backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur)); color: var(--fg); }
+.app .side { left: 0; width: 17%; padding: 3% 1.5%; font-size: clamp(8px, 1.1vw, 13px); display: flex; flex-direction: column; gap: 8%; }
+.app .side i { display: block; height: 5%; min-height: 6px; border-radius: 4px; background: currentColor; opacity: .16; }
+.app .side i:first-child { opacity: .4; width: 60%; }
+.app .chat { left: 30%; right: 13%; padding: 4% 3%; font-size: clamp(9px, 1.25vw, 15px); display: flex; flex-direction: column; gap: 4%; }
+.app .chat p { margin: 0; }
+.app .chat .you { align-self: flex-end; background: color-mix(in srgb, currentColor 12%, transparent); padding: 1.5% 3%; border-radius: 12px; }
+.app .chat .box { margin-top: auto; border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: 12px; padding: 2.5% 3%; opacity: .7; }
+.knobs { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; margin-top: 14px; color: var(--dim); font-size: 13px; }
+.knobs label { display: flex; gap: 8px; align-items: center; }
+#done { margin-top: 20px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+#done p { margin: 0 0 8px; }
+.copy { display: block; width: 100%; text-align: left; white-space: pre-wrap; word-break: break-all; background: var(--field); border-radius: 8px; padding: 10px 12px; font-size: 12px; }
+#toast { position: fixed; bottom: 24px; left: 50%; translate: -50%; background: var(--ink); color: var(--page); padding: 8px 16px; border-radius: 99px; opacity: 0; transition: opacity .15s; pointer-events: none; z-index: 9; }
+#toast.on { opacity: 1; }
+[hidden] { display: none !important; }
+@media (max-width: 700px) { #name { flex: 1 1 140px; } .gap { display: none; } }
+</style>
+</head>
+<body>
+<header>
+  <a class="home" href="./" aria-label="All themes"><span>✻</span> Themes</a>
+  <input type="text" id="name" aria-label="Backdrop name" autocomplete="off" spellcheck="false">
+  <input type="color" id="color" aria-label="Colour">
+  <select id="light" aria-label="Light or dark"><option value="">Dark</option><option value="1">Light</option></select>
+  <button id="shuffle">Shuffle</button>
+  <span class="gap"></span>
+  <a class="btn" href="studio.html">Terminal colours</a>
+  <button id="share">Share</button>
+  <button id="download">Download</button>
+  <button id="install" class="main">Install</button>
+</header>
+<main>
+  <div class="scenes" id="scenes"></div>
+  <div class="app" id="app">
+    <div class="back" id="back"></div>
+    <div class="side"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="chat">
+      <p class="you">fix the login bug</p>
+      <p>I'll update the check in auth.ts and run the tests.</p>
+      <p class="mono">● Update(src/auth.ts)</p>
+      <p>All 12 tests pass.</p>
+      <p class="box">Reply…</p>
+    </div>
+  </div>
+  <div class="knobs">
+    <label>Density <input type="range" id="density" min="0" max="1" step="0.05"></label>
+    <label>Speed <input type="range" id="speed" min="0" max="1" step="0.05"></label>
+    <label>Panel blur <input type="range" id="blur" min="0" max="40" step="1"></label>
+    <label>Panel opacity <input type="range" id="opacity" min="0" max="1" step="0.05"></label>
+  </div>
+  <section id="done" hidden>
+    <p id="done-text"></p>
+    <button class="copy mono" id="done-cmd"></button>
+  </section>
+</main>
+<div id="toast" role="status"></div>
+
+<script type="module">
+import { slug } from './lib.js'
+import { SCENES, recipe, draw, palette, packRecipe, unpackRecipe } from './scenes.js'
+
+const $ = (id) => document.getElementById(id)
+const el = (tag, props = {}, ...kids) => { const n = Object.assign(document.createElement(tag), props); n.append(...kids); return n }
+const toast = (text) => { const t = $('toast'); t.textContent = text; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 1800) }
+const copy = async (text, said = 'Copied') => { try { await navigator.clipboard.writeText(text); toast(said) } catch { toast('Copy failed') } }
+const store = { get: (k) => { try { return localStorage.getItem(k) } catch { return null } }, set: (k, v) => { try { localStorage.setItem(k, v) } catch {} } }
+const local = await fetch('api/status').then((r) => (r.ok ? r.json() : null)).catch(() => null)
+
+let x = (location.hash.startsWith('#d.') && unpackRecipe(location.hash.slice(1))) || unpackRecipe(store.get('backdrop') ?? '') || recipe({ scene: 'koi', name: 'Koi Pond', color: '#e8743b' })
+let named = x.name !== SCENES.find((s) => s.id === x.scene).name
+
+// The SVG is built here from sanitised numbers and colours only, so it is safe to place as markup.
+function paint() {
+  x = recipe(x)
+  const p = palette(x.color, x.light)
+  $('back').innerHTML = draw(x)
+  const app = $('app').style
+  app.setProperty('--tint', p.tint); app.setProperty('--glass', x.opacity); app.setProperty('--blur', x.blur + 'px'); app.setProperty('--fg', x.light ? '#1a1a1a' : '#f2f2f2')
+  if (document.activeElement !== $('name')) $('name').value = x.name
+  $('color').value = x.color; $('light').value = x.light ? '1' : ''
+  for (const k of ['density', 'speed', 'blur', 'opacity']) $(k).value = x[k]
+  for (const b of $('scenes').children) {
+    b.setAttribute('aria-pressed', b.dataset.id === x.scene)
+    b.firstChild.innerHTML = draw({ ...x, scene: b.dataset.id, density: 0.3 }, '-' + b.dataset.id)
+  }
+  const code = packRecipe(x)
+  store.set('backdrop', code)
+  history.replaceState(null, '', location.pathname + '#' + code)
+}
+
+$('scenes').replaceChildren(...SCENES.map((s) => {
+  const b = el('button', {}, el('span', { className: 'thumb' }), el('b', { textContent: s.name }))
+  b.dataset.id = s.id
+  b.onclick = () => { if (!named) x.name = s.name; x.scene = s.id; $('done').hidden = true; paint() }
+  return b
+}))
+$('name').oninput = () => { x.name = $('name').value; named = true }
+$('name').onchange = paint
+$('color').oninput = () => { x.color = $('color').value; paint() }
+$('light').onchange = () => { x.light = $('light').value === '1'; paint() }
+$('shuffle').onclick = () => { x.n = Math.floor(Math.random() * 999999); paint() }
+for (const k of ['density', 'speed', 'blur', 'opacity']) $(k).oninput = () => { x[k] = +$(k).value; paint() }
+
+function done(text, cmd) { $('done').hidden = false; $('done-text').textContent = text; $('done-cmd').hidden = !cmd; $('done-cmd').textContent = cmd ?? ''; $('done').scrollIntoView({ block: 'nearest', behavior: 'smooth' }) }
+$('done-cmd').onclick = () => copy($('done-cmd').textContent)
+$('share').onclick = () => copy(location.href, 'Link copied')
+$('download').onclick = () => {
+  const name = slug(x.name) + '.backdrop.json'
+  const a = el('a', { href: URL.createObjectURL(new Blob([JSON.stringify(x, null, 2) + '\n'], { type: 'application/json' })), download: name })
+  a.click(); URL.revokeObjectURL(a.href)
+  done('Saved the recipe. Install it with:', `npx -y github:anhnt256/claude-code-themes install ${name}`)
+}
+$('install').onclick = async () => {
+  if (!local) return done('Run this in a terminal, then restart the Claude desktop app.', `npx -y github:anhnt256/claude-code-themes install ${packRecipe(x)}`)
+  $('install').disabled = true
+  const res = await fetch('api/install-desktop', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ recipe: x }) }).catch(() => null)
+  $('install').disabled = false
+  const out = await res?.json().catch(() => null)
+  if (!res?.ok || !out) return toast(out?.error ?? 'Install failed')
+  done(out.message, out.commands?.join('\n'))
+}
+paint()
+</script>
+</body>
+</html>
