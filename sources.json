@@ -27,14 +27,55 @@
   ],
   "desktop": [
     {
-      "name": "Theme Examples (all 20 scenes)",
+      "name": "Koi Mosaic",
       "author": "Anthropic",
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
-      "appearance": "both",
+      "appearance": "light",
+      "description": "A tiled koi pond from above: two koi, lily pads, slow ripples.",
       "install": [
-        "/plugin install theme-examples@claude-plugins-official"
-      ]
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme koi-mosaic"
+      ],
+      "preview": "previews/koi-mosaic.svg"
+    },
+    {
+      "name": "Pixel Cats",
+      "author": "markimoo09",
+      "repo": "markimoo09/claude-code-themes",
+      "appearance": "light",
+      "description": "Pixel art of two fluffy cats in a sunny room.",
+      "install": [
+        "/plugin marketplace add markimoo09/claude-code-themes",
+        "/plugin install looks@local-looks",
+        "/custom-theme pixel-cats"
+      ],
+      "preview": "https://raw.githubusercontent.com/markimoo09/claude-code-themes/main/preview-pixel-cats.png"
+    },
+    {
+      "name": "Paper Garden",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "light",
+      "description": "Cut-paper leaves at the edges of a warm white sheet, one coral bloom.",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme paper-garden"
+      ],
+      "preview": "previews/paper-garden.svg"
+    },
+    {
+      "name": "Rainy Window",
+      "author": "ishuagrawal",
+      "repo": "ishuagrawal/claude-code-themes",
+      "appearance": "both",
+      "description": "Clawd's room on a rainy day in halftone dots: rain at the window and a record spinning.",
+      "install": [
+        "/plugin marketplace add ishuagrawal/claude-code-themes",
+        "/plugin install rainy-window@claude-code-themes"
+      ],
+      "preview": "https://raw.githubusercontent.com/ishuagrawal/claude-code-themes/main/assets/rainy-window.gif"
     },
     {
       "name": "Honu Lagoon",
@@ -42,20 +83,320 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "light",
+      "description": "A live ASCII lagoon from above: a tile turtle swims by a sand island.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme honu-lagoon"
-      ]
+      ],
+      "preview": "previews/honu-lagoon.svg"
     },
     {
-      "name": "Koi Mosaic",
+      "name": "Snowfall",
+      "author": "Brezn610",
+      "repo": "Brezn610/snowfall-theme",
+      "appearance": "dark",
+      "description": "A moonlit cabin and pines under falling snow that reacts to your session: the snowfall grows as the context window fills, with a ring badge showing how full it is.",
+      "install": [
+        "/plugin marketplace add Brezn610/snowfall-theme",
+        "/plugin install snowfall-theme@snowfall"
+      ],
+      "preview": "previews/community-snowfall.svg"
+    },
+    {
+      "name": "Backdrop",
+      "author": "AkkiCode06",
+      "repo": "AkkiCode06/claude-backdrops",
+      "description": "A theming kit: pick one of 23 animated palettes, describe a look, or paste your own colors. No mod to write.",
+      "install": [
+        "/plugin marketplace add AkkiCode06/claude-backdrops",
+        "/plugin install gradient-flow@claude-backdrops"
+      ],
+      "preview": "https://raw.githubusercontent.com/AkkiCode06/claude-backdrops/main/assets/sunset-in-la.gif"
+    },
+    {
+      "name": "Night Reef",
       "author": "Anthropic",
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
-      "appearance": "light",
+      "appearance": "dark",
+      "description": "The lagoon after dark: a turtle and a ray that glow as they swim.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
-        "/custom-theme koi-mosaic"
+        "/custom-theme night-reef"
+      ],
+      "preview": "previews/night-reef.svg"
+    },
+    {
+      "name": "Christmas Night & City Tour",
+      "author": "kimthangk",
+      "repo": "kimthangk/claude-theme-lewell",
+      "appearance": "dark",
+      "description": "Pixel-art backdrops with a little moss companion that walks while Claude works and stops when Claude needs you. A snowy Christmas village, plus a city tour of Bangkok, Tokyo, Paris, London, New York, San Francisco and Singapore.",
+      "install": [
+        "/plugin marketplace add kimthangk/claude-theme-lewell",
+        "/plugin install lewell-theme@claude-theme-lewell"
+      ],
+      "preview": "https://raw.githubusercontent.com/kimthangk/claude-theme-lewell/main/images/christmas.jpg"
+    },
+    {
+      "name": "Aurora",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "description": "Northern lights swaying over a dark ridge.",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme aurora"
+      ],
+      "preview": "previews/aurora.svg"
+    },
+    {
+      "name": "Neon Tokyo",
+      "author": "markimoo09",
+      "repo": "markimoo09/claude-code-themes",
+      "appearance": "dark",
+      "description": "Pixel-art Tokyo at night with neon signs, a scramble crossing and a cat on a vending machine.",
+      "install": [
+        "/plugin marketplace add markimoo09/claude-code-themes",
+        "/plugin install looks@local-looks",
+        "/custom-theme neon-tokyo"
+      ],
+      "preview": "https://raw.githubusercontent.com/markimoo09/claude-code-themes/main/preview-neon-tokyo.png"
+    },
+    {
+      "name": "Snow Pines",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "description": "An ASCII pine forest at dusk, snow drifting down through the trees.",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme snow-pines"
+      ],
+      "preview": "previews/snow-pines.svg"
+    },
+    {
+      "name": "Digital Rain",
+      "author": "claudefoliothemes",
+      "repo": "claudefoliothemes/claude-code-themes",
+      "appearance": "dark",
+      "description": "Matrix-style green code falling in two layers behind the chat.",
+      "preview": "https://raw.githubusercontent.com/claudefoliothemes/claude-code-themes/main/previews/digital-rain.gif",
+      "install": [
+        "/plugin install digital-rain --marketplace claudefoliothemes/claude-code-themes"
+      ]
+    },
+    {
+      "name": "Neon Horizon",
+      "author": "claudefoliothemes",
+      "repo": "claudefoliothemes/claude-code-themes",
+      "appearance": "dark",
+      "description": "A striped neon sun and a grid rolling toward you behind the chat.",
+      "preview": "https://raw.githubusercontent.com/claudefoliothemes/claude-code-themes/main/previews/neon-horizon.gif"
+    },
+    {
+      "name": "Firefly Night",
+      "author": "claudefoliothemes",
+      "repo": "claudefoliothemes/claude-code-themes",
+      "appearance": "dark",
+      "description": "Fireflies blinking at the edge of a pine forest behind the chat.",
+      "preview": "https://raw.githubusercontent.com/claudefoliothemes/claude-code-themes/main/previews/firefly-night.gif"
+    },
+    {
+      "name": "Holiday Lights",
+      "author": "claudefoliothemes",
+      "repo": "claudefoliothemes/claude-code-themes",
+      "appearance": "dark",
+      "description": "String lights, a lit pine and falling snow behind the chat.",
+      "preview": "https://raw.githubusercontent.com/claudefoliothemes/claude-code-themes/main/previews/holiday-lights.gif"
+    },
+    {
+      "name": "Neon Rain",
+      "author": "0toshigami",
+      "repo": "0toshigami/claude-desktop-themes",
+      "appearance": "dark",
+      "description": "An animated ASCII scene of neon rain behind the chat.",
+      "preview": "https://raw.githubusercontent.com/0toshigami/claude-desktop-themes/main/docs/neon-rain.gif",
+      "install": [
+        "/plugin install themes-for-claude --marketplace 0toshigami/claude-desktop-themes"
+      ]
+    },
+    {
+      "name": "Lantern Night",
+      "author": "0toshigami",
+      "repo": "0toshigami/claude-desktop-themes",
+      "appearance": "dark",
+      "description": "An animated ASCII scene of lanterns at night behind the chat.",
+      "preview": "https://raw.githubusercontent.com/0toshigami/claude-desktop-themes/main/docs/lantern-night.gif",
+      "install": [
+        "/plugin install themes-for-claude --marketplace 0toshigami/claude-desktop-themes"
+      ]
+    },
+    {
+      "name": "Golden Gate Dither",
+      "author": "timothyouu",
+      "repo": "timothyouu/claude-code-themes",
+      "path": "themes/golden-gate-dither",
+      "appearance": "both",
+      "description": "Golden Gate Bridge in dithered pixels, with a light and a dark palette.",
+      "preview": "https://raw.githubusercontent.com/timothyouu/claude-code-themes/main/assets/golden-gate-dark.png",
+      "install": [
+        "/plugin marketplace add timothyouu/claude-code-themes",
+        "/plugin install golden-gate-dither@claude-code-themes"
+      ]
+    },
+    {
+      "name": "Clawd Scenarios",
+      "author": "timothyouu",
+      "repo": "timothyouu/claude-code-themes",
+      "path": "themes/clawd-scenarios",
+      "appearance": "both",
+      "description": "Clawd the mascot in twelve scenes, from a rainy cafe to a planetarium.",
+      "preview": "https://raw.githubusercontent.com/timothyouu/claude-code-themes/main/assets/clawd-scenarios/skateboard-dark.png",
+      "install": [
+        "/plugin install clawd-scenarios@claude-code-themes"
+      ]
+    },
+    {
+      "name": "Petronas KL",
+      "author": "aimanamri",
+      "repo": "aimanamri/claude-code-themes",
+      "appearance": "dark",
+      "description": "Pixel-art Kuala Lumpur at dusk with the Petronas Towers and fireworks.",
+      "preview": "https://raw.githubusercontent.com/aimanamri/claude-code-themes/main/preview-petronas-kl.svg",
+      "install": [
+        "claude plugin marketplace add aimanamri/claude-code-themes",
+        "claude plugin install looks-malaysia@looks-malaysia"
+      ]
+    },
+    {
+      "name": "Kelantan",
+      "author": "aimanamri",
+      "repo": "aimanamri/claude-code-themes",
+      "appearance": "dark",
+      "description": "Pixel-art Kelantan village at night with a lit wayang kulit shadow screen.",
+      "preview": "https://raw.githubusercontent.com/aimanamri/claude-code-themes/main/preview-kelantan.svg",
+      "install": [
+        "claude plugin marketplace add aimanamri/claude-code-themes",
+        "claude plugin install looks-malaysia@looks-malaysia"
+      ]
+    },
+    {
+      "name": "Sabah",
+      "author": "aimanamri",
+      "repo": "aimanamri/claude-code-themes",
+      "appearance": "dark",
+      "description": "Pixel-art Mount Kinabalu at sunset above a stilt village on the water.",
+      "preview": "https://raw.githubusercontent.com/aimanamri/claude-code-themes/main/preview-sabah.svg",
+      "install": [
+        "claude plugin marketplace add aimanamri/claude-code-themes",
+        "claude plugin install looks-malaysia@looks-malaysia"
+      ]
+    },
+    {
+      "name": "Sakura",
+      "author": "CodySpooner",
+      "repo": "CodySpooner/ClaudeCodeThemes",
+      "path": "theme-pack",
+      "appearance": "both",
+      "description": "Red and white, with cherry petals drifting under a red sun above the prompt.",
+      "preview": "https://raw.githubusercontent.com/CodySpooner/ClaudeCodeThemes/main/docs/images/sakura-boot.gif",
+      "install": [
+        "/plugin install theme-pack --marketplace CodySpooner/ClaudeCodeThemes"
+      ]
+    },
+    {
+      "name": "Xody",
+      "author": "CodySpooner",
+      "repo": "CodySpooner/ClaudeCodeThemes",
+      "path": "theme-pack",
+      "appearance": "dark",
+      "description": "Red on black, with embers rising off glowing coals above the prompt.",
+      "preview": "https://raw.githubusercontent.com/CodySpooner/ClaudeCodeThemes/main/docs/images/xody-boot.gif",
+      "install": [
+        "/plugin install theme-pack --marketplace CodySpooner/ClaudeCodeThemes"
+      ]
+    },
+    {
+      "name": "Gotham Night",
+      "author": "hamzafer",
+      "repo": "hamzafer/claude-code-mods",
+      "appearance": "dark",
+      "description": "Rainy gothic city with searchlights while Claude works, bats when it needs you.",
+      "preview": "https://raw.githubusercontent.com/hamzafer/claude-code-mods/main/images/gotham-night.gif",
+      "install": [
+        "npx claude-code-mods@latest"
+      ]
+    },
+    {
+      "name": "Matrix Mode",
+      "author": "hamzafer",
+      "repo": "hamzafer/claude-code-mods",
+      "appearance": "dark",
+      "description": "Green code rain that parts for a waiting cursor when Claude needs you.",
+      "preview": "https://raw.githubusercontent.com/hamzafer/claude-code-mods/main/images/matrix-mode.png",
+      "install": [
+        "npx claude-code-mods@latest"
+      ]
+    },
+    {
+      "name": "Stark Lab",
+      "author": "hamzafer",
+      "repo": "hamzafer/claude-code-mods",
+      "appearance": "dark",
+      "description": "Holographic workshop with an arc reactor that flares gold when Claude waits.",
+      "preview": "https://raw.githubusercontent.com/hamzafer/claude-code-mods/main/images/stark-lab.png",
+      "install": [
+        "npx claude-code-mods@latest"
+      ]
+    },
+    {
+      "name": "Interstellar",
+      "author": "hamzafer",
+      "repo": "hamzafer/claude-code-mods",
+      "appearance": "dark",
+      "description": "A black hole turns while Claude works; a ship hails you when it needs you.",
+      "preview": "https://raw.githubusercontent.com/hamzafer/claude-code-mods/main/images/interstellar.png",
+      "install": [
+        "npx claude-code-mods@latest"
+      ]
+    },
+    {
+      "name": "Firefly Lake",
+      "author": "mjoyshuvo",
+      "repo": "mjoyshuvo/canopy-claude-desktop-theme",
+      "appearance": "dark",
+      "description": "Moonlit lake with drifting fireflies, swaying spruces and a firework.",
+      "preview": "https://raw.githubusercontent.com/mjoyshuvo/canopy-claude-desktop-theme/main/media/themes/firefly-lake.gif",
+      "install": [
+        "/plugin marketplace add mjoyshuvo/canopy-claude-desktop-theme",
+        "/plugin install canopy@canopy"
+      ]
+    },
+    {
+      "name": "Silver Grass",
+      "author": "mjoyshuvo",
+      "repo": "mjoyshuvo/canopy-claude-desktop-theme",
+      "appearance": "dark",
+      "description": "Dense silver meadow at dusk, with breeze rolling through and mist on a lake.",
+      "preview": "https://raw.githubusercontent.com/mjoyshuvo/canopy-claude-desktop-theme/main/media/themes/silver-grass.gif",
+      "install": [
+        "/plugin marketplace add mjoyshuvo/canopy-claude-desktop-theme",
+        "/plugin install canopy@canopy"
+      ]
+    },
+    {
+      "name": "Noir Skin",
+      "author": "hellosverre",
+      "repo": "hellosverre/claude-skins",
+      "appearance": "dark",
+      "description": "Tool rows with icons, diff and Mermaid chart cards in a noir skin.",
+      "preview": "https://raw.githubusercontent.com/hellosverre/claude-skins/main/docs/demo.gif",
+      "install": [
+        "/plugin marketplace add hellosverre/claude-skins",
+        "/plugin install skins@hellosverre-mods"
       ]
     },
     {
@@ -64,10 +405,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "light",
+      "description": "A two-ink riso sunrise: halftone dots that breathe outward.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme halftone-dawn"
-      ]
+      ],
+      "preview": "previews/halftone-dawn.svg"
     },
     {
       "name": "Halftone Dusk",
@@ -75,10 +418,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "The riso sunrise on night-blue stock: an ember sun in breathing dots.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme halftone-dusk"
-      ]
+      ],
+      "preview": "previews/halftone-dusk.svg"
     },
     {
       "name": "Plotter Tide",
@@ -86,10 +431,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "light",
+      "description": "Pen-plotter tide lines drawing themselves on warm paper.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme plotter-tide"
-      ]
+      ],
+      "preview": "previews/plotter-tide.svg"
     },
     {
       "name": "Plotter Tide, Night",
@@ -97,10 +444,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "The plotter's tide chart in pale ink on blue-black night paper.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme plotter-tide-night"
-      ]
+      ],
+      "preview": "previews/plotter-tide-night.svg"
     },
     {
       "name": "Dither Dunes",
@@ -108,10 +457,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "light",
+      "description": "One-bit dunes on sand paper, shaded in dots, under a terracotta sun.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme dither-dunes"
-      ]
+      ],
+      "preview": "previews/dither-dunes.svg"
     },
     {
       "name": "Dither Dunes Night",
@@ -119,21 +470,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "The same dunes after dark: pale dots on umber, an ember sun.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme dither-dunes-night"
-      ]
-    },
-    {
-      "name": "Paper Garden",
-      "author": "Anthropic",
-      "repo": "anthropics/claude-plugins-official",
-      "path": "plugins/theme-examples",
-      "appearance": "light",
-      "install": [
-        "/plugin install theme-examples@claude-plugins-official",
-        "/custom-theme paper-garden"
-      ]
+      ],
+      "preview": "previews/dither-dunes-night.svg"
     },
     {
       "name": "Paper Garden, Kraft",
@@ -141,32 +483,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "Cut-paper leaves at the edges of dark kraft paper, one coral bloom.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme paper-garden-kraft"
-      ]
-    },
-    {
-      "name": "Night Reef",
-      "author": "Anthropic",
-      "repo": "anthropics/claude-plugins-official",
-      "path": "plugins/theme-examples",
-      "appearance": "dark",
-      "install": [
-        "/plugin install theme-examples@claude-plugins-official",
-        "/custom-theme night-reef"
-      ]
-    },
-    {
-      "name": "Snow Pines",
-      "author": "Anthropic",
-      "repo": "anthropics/claude-plugins-official",
-      "path": "plugins/theme-examples",
-      "appearance": "dark",
-      "install": [
-        "/plugin install theme-examples@claude-plugins-official",
-        "/custom-theme snow-pines"
-      ]
+      ],
+      "preview": "previews/paper-garden-kraft.svg"
     },
     {
       "name": "Braille Stars",
@@ -174,10 +496,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "A slow night sky drawn dot by dot on a braille grid.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme braille-stars"
-      ]
+      ],
+      "preview": "previews/braille-stars.svg"
     },
     {
       "name": "Block Clouds",
@@ -185,10 +509,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "Night clouds built from blocks on a teletext grid, drifting in.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme teletext-clouds"
-      ]
+      ],
+      "preview": "previews/teletext-clouds.svg"
     },
     {
       "name": "Vector Range",
@@ -196,10 +522,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "Phosphor mountains on black; an amber beam keeps retracing them.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme vector-range"
-      ]
+      ],
+      "preview": "previews/vector-range.svg"
     },
     {
       "name": "Departure Board",
@@ -207,10 +535,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "An amber LED board re-lettering itself, row by row.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme departure-board"
-      ]
+      ],
+      "preview": "previews/departure-board.svg"
     },
     {
       "name": "Blueprint",
@@ -218,10 +548,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "A cyanotype sheet; a comet goes round its plotted orbit in the corner.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme blueprint"
-      ]
+      ],
+      "preview": "previews/blueprint.svg"
     },
     {
       "name": "Deep Water",
@@ -229,21 +561,12 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "Light falling through deep water, and one quiet turtle.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme deep-water"
-      ]
-    },
-    {
-      "name": "Aurora",
-      "author": "Anthropic",
-      "repo": "anthropics/claude-plugins-official",
-      "path": "plugins/theme-examples",
-      "appearance": "dark",
-      "install": [
-        "/plugin install theme-examples@claude-plugins-official",
-        "/custom-theme aurora"
-      ]
+      ],
+      "preview": "previews/deep-water.svg"
     },
     {
       "name": "Ember",
@@ -251,123 +574,86 @@
       "repo": "anthropics/claude-plugins-official",
       "path": "plugins/theme-examples",
       "appearance": "dark",
+      "description": "A warm glow in the corners and a few embers rising.",
       "install": [
         "/plugin install theme-examples@claude-plugins-official",
         "/custom-theme ember"
-      ]
-    },
-    {
-      "name": "Snowfall",
-      "author": "Brezn610",
-      "repo": "Brezn610/snowfall-theme",
-      "appearance": "dark",
-      "install": [
-        "/plugin marketplace add Brezn610/snowfall-theme",
-        "/plugin install snowfall-theme@snowfall"
-      ]
-    },
-    {
-      "name": "Rainy Window",
-      "author": "ishuagrawal",
-      "repo": "ishuagrawal/claude-code-themes",
-      "appearance": "both",
-      "install": [
-        "/plugin marketplace add ishuagrawal/claude-code-themes",
-        "/plugin install rainy-window@claude-code-themes"
-      ]
-    },
-    {
-      "name": "Backdrop",
-      "author": "AkkiCode06",
-      "repo": "AkkiCode06/claude-backdrops",
-      "install": [
-        "/plugin marketplace add AkkiCode06/claude-backdrops",
-        "/plugin install gradient-flow@claude-backdrops"
-      ]
+      ],
+      "preview": "previews/ember.svg"
     },
     {
       "name": "Cosmos",
       "author": "markimoo09",
       "repo": "markimoo09/claude-code-themes",
       "appearance": "dark",
+      "description": "A tilted black hole and a turning spiral galaxy over cyan, violet and ember nebulae.",
       "install": [
         "/plugin marketplace add markimoo09/claude-code-themes",
         "/plugin install looks@local-looks",
         "/custom-theme cosmos"
-      ]
-    },
-    {
-      "name": "Pixel Cats",
-      "author": "markimoo09",
-      "repo": "markimoo09/claude-code-themes",
-      "appearance": "light",
-      "install": [
-        "/plugin marketplace add markimoo09/claude-code-themes",
-        "/plugin install looks@local-looks",
-        "/custom-theme pixel-cats"
-      ]
+      ],
+      "preview": "https://raw.githubusercontent.com/markimoo09/claude-code-themes/main/preview-cosmos.png"
     },
     {
       "name": "Dark Fleet",
       "author": "markimoo09",
       "repo": "markimoo09/claude-code-themes",
       "appearance": "dark",
+      "description": "Cinematic space opera: a hooded warrior, a wedge-shaped fleet and a moon-sized battle station.",
       "install": [
         "/plugin marketplace add markimoo09/claude-code-themes",
         "/plugin install looks@local-looks",
         "/custom-theme dark-fleet"
-      ]
-    },
-    {
-      "name": "Neon Tokyo",
-      "author": "markimoo09",
-      "repo": "markimoo09/claude-code-themes",
-      "appearance": "dark",
-      "install": [
-        "/plugin marketplace add markimoo09/claude-code-themes",
-        "/plugin install looks@local-looks",
-        "/custom-theme neon-tokyo"
-      ]
+      ],
+      "preview": "https://raw.githubusercontent.com/markimoo09/claude-code-themes/main/preview-dark-fleet.png"
     },
     {
       "name": "Marina Bay",
       "author": "markimoo09",
       "repo": "markimoo09/claude-code-themes",
       "appearance": "dark",
+      "description": "Pixel-art Singapore at night across Marina Bay, with a laser show and glowing Supertrees.",
       "install": [
         "/plugin marketplace add markimoo09/claude-code-themes",
         "/plugin install looks@local-looks",
         "/custom-theme marina-bay"
-      ]
+      ],
+      "preview": "https://raw.githubusercontent.com/markimoo09/claude-code-themes/main/preview-marina-bay.png"
     },
     {
       "name": "Holo Damascus",
       "author": "bassonrichard",
       "repo": "bassonrichard/holo-damascus",
       "appearance": "both",
+      "description": "Pearl white with prismatic Damascus contour lines; black foil in dark mode.",
       "install": [
         "/plugin marketplace add bassonrichard/holo-damascus",
         "/plugin install holo-damascus@holo-damascus"
-      ]
+      ],
+      "preview": "https://raw.githubusercontent.com/bassonrichard/holo-damascus/main/docs/dark.png"
     },
     {
       "name": "Hive Night",
       "author": "Errr0rr404",
       "repo": "Errr0rr404/hive-night",
+      "description": "A hexagon backdrop theme for the Claude desktop app.",
       "install": [
         "/plugin marketplace add Errr0rr404/hive-night",
         "/plugin install hive-night@hive-night"
-      ]
+      ],
+      "preview": "https://raw.githubusercontent.com/Errr0rr404/hive-night/main/docs/preview.png"
     },
     {
       "name": "SpaceMolt",
       "author": "SpaceMolt",
       "repo": "SpaceMolt/claude-code-theme",
       "appearance": "dark",
+      "description": "A twinkling starfield with an ember and plasma glow, in the SpaceMolt palette.",
       "install": [
         "/plugin marketplace add SpaceMolt/claude-code-theme",
         "/plugin install spacemolt-theme@spacemolt"
-      ]
+      ],
+      "preview": "https://raw.githubusercontent.com/SpaceMolt/claude-code-theme/main/screenshot.png"
     },
     {
       "name": "Backdrops",
@@ -375,50 +661,60 @@
       "repo": "donvito/skillsbento",
       "path": "plugins/backdrops",
       "appearance": "dark",
+      "description": "Fourteen scenes with matching dark colors: two Formula 1, six travel scenes and six retro looks.",
       "install": [
         "/plugin marketplace add donvito/skillsbento",
         "/plugin install backdrops@skillsbento"
-      ]
+      ],
+      "preview": "https://raw.githubusercontent.com/donvito/skillsbento/main/plugins/backdrops/preview.jpg"
     },
     {
       "name": "Bubblegum Fizz",
       "author": "HemalathaMadeswaran18",
       "repo": "HemalathaMadeswaran18/bubblegum-fizz",
       "appearance": "both",
+      "description": "Strawberry-milk pink by day, glowing berry soda by night, with iridescent bubbles drifting up the edges.",
       "install": [
         "/plugin marketplace add HemalathaMadeswaran18/bubblegum-fizz",
         "/plugin install bubblegum-fizz@bubblegum-fizz"
-      ]
+      ],
+      "preview": "previews/community-bubblegum-fizz.svg"
     },
     {
       "name": "Aurora",
       "author": "00015972",
       "repo": "00015972/claude-aurora",
       "appearance": "both",
+      "description": "Polar night in dark mode, arctic dawn in light mode, with a northern-lights glow along the top of the window.",
       "install": [
         "/plugin marketplace add 00015972/claude-aurora",
         "/plugin install aurora@claude-aurora"
-      ]
+      ],
+      "preview": "previews/community-aurora.svg"
     },
     {
       "name": "One Dark Pro",
       "author": "Verschnupft",
       "repo": "Verschnupft/claude-one-dark-pro",
       "appearance": "dark",
+      "description": "The One Dark Pro palette from VS Code for the desktop app's surfaces, text, accents and code.",
       "install": [
         "/plugin marketplace add Verschnupft/claude-one-dark-pro",
         "/plugin install one-dark-pro@claude-one-dark-pro"
-      ]
+      ],
+      "preview": "previews/community-one-dark-pro.svg"
     },
     {
-      "name": "Christmas Night & City Tour",
-      "author": "kimthangk",
-      "repo": "kimthangk/claude-theme-lewell",
-      "appearance": "dark",
+      "name": "Theme Examples (all 20 scenes)",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "both",
+      "description": "Twenty animated backdrops, light and dark: a lagoon, a night reef, a koi pond, halftone sunrises, a departure board, a braille starfield and more. Pick one with /custom-theme.",
       "install": [
-        "/plugin marketplace add kimthangk/claude-theme-lewell",
-        "/plugin install lewell-theme@claude-theme-lewell"
-      ]
+        "/plugin install theme-examples@claude-plugins-official"
+      ],
+      "preview": "previews/koi-mosaic.svg"
     }
   ],
   "tools": [

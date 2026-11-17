@@ -63,6 +63,15 @@ dialog::backdrop { background: #0009; }
 #add { width: 100%; margin-top: 8px; background: var(--field); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font-size: 13px; }
 #toast { position: fixed; bottom: 24px; left: 50%; translate: -50%; background: var(--ink); color: var(--page); padding: 8px 16px; border-radius: 99px; font-size: 14px; opacity: 0; transition: opacity .15s; pointer-events: none; z-index: 9; }
 #toast.on { opacity: 1; }
+.grid.desktop { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--field); }
+#view { width: min(960px, calc(100vw - 24px)); }
+#view img { display: block; width: 100%; max-height: 60dvh; object-fit: cover; background: var(--field); }
+#view .info { padding: 20px; }
+#view h3 { margin: 0; font-size: 20px; }
+#view p { margin: 4px 0 0; color: var(--dim); font-size: 14px; }
+#v-desc { color: var(--ink) !important; margin: 12px 0 !important; font-size: 15px !important; }
+#v-install .copy { margin-top: 8px; max-width: none; }
 [hidden] { display: none !important; }
 @media (max-width: 700px) { .edit { grid-template-columns: 1fr; } .edit .side { border-left: 0; border-top: 1px solid var(--line); max-height: none; } dialog { overflow-y: auto; } h1 { font-size: 28px; } .bar input[type=search] { flex-basis: 100%; } }
 </style>
@@ -75,8 +84,10 @@ dialog::backdrop { background: #0009; }
 /plugin install themes@claude-code-themes</button>
 
   <div class="bar">
+    <label><input type="radio" name="kind" value="desktop" checked><span id="n-desktop">Desktop</span></label>
+    <label><input type="radio" name="kind" value="terminal"><span id="n-terminal">Terminal</span></label>
     <input type="search" id="q" placeholder="Search" aria-label="Search themes" autocomplete="off">
-    <label><input type="radio" name="mode" value="" checked><span id="all">All</span></label>
+    <label><input type="radio" name="mode" value="" checked><span>All</span></label>
     <label><input type="radio" name="mode" value="dark"><span>Dark</span></label>
     <label><input type="radio" name="mode" value="light"><span>Light</span></label>
   </div>
@@ -84,9 +95,6 @@ dialog::backdrop { background: #0009; }
 
   <h2 id="more-h">More terminal themes</h2>
   <div class="list" id="more"></div>
-
-  <h2>Desktop app</h2>
-  <div class="list" id="desktop"></div>
 
   <h2>Theme builders</h2>
   <div class="list" id="tools"></div>
@@ -108,6 +116,16 @@ dialog::backdrop { background: #0009; }
       <div id="toks"></div>
       <select id="add" aria-label="Add a colour"></select>
     </div>
+  </div>
+</dialog>
+<dialog id="view" aria-labelledby="v-name">
+  <img id="v-img" alt="">
+  <div class="info">
+    <h3 id="v-name"></h3>
+    <p id="v-credit"></p>
+    <p id="v-desc"></p>
+    <div id="v-install"></div>
+    <div class="actions"><a class="main" id="v-src" target="_blank" rel="noopener">Open on GitHub</a><button id="v-close">Close</button></div>
   </div>
 </dialog>
 <div id="toast" role="status"></div>
@@ -141,10 +159,33 @@ function card(t) {
   c.onclick = () => open(t)
   return c
 }
+const link = (t) => gh(t.repo) + (t.path ? '/tree/HEAD/' + t.path : '')
+function scene(t) {
+  const c = el('button', { className: 'card' }, el('img', { src: t.preview, alt: '', loading: 'lazy' }), el('footer', {}, el('b', { textContent: t.name }), el('i', { textContent: t.author })))
+  c.onclick = () => view(t)
+  return c
+}
+function view(t) {
+  $('v-img').src = t.preview
+  $('v-name').textContent = t.name
+  $('v-credit').replaceChildren('by ', el('a', { href: gh(t.repo.split('/')[0]), textContent: t.author, target: '_blank', rel: 'noopener' }), ' · ' + t.repo)
+  $('v-desc').textContent = t.description ?? ''
+  $('v-install').replaceChildren(...(t.install ?? []).map((c) => { const b = el('button', { className: 'copy mono', textContent: c }); b.dataset.copy = c; return b }))
+  $('v-src').href = link(t)
+  $('view').showModal()
+}
+$('v-close').onclick = () => $('view').close()
+$('view').onclick = (e) => { if (e.target === $('view')) $('view').close() }
 function filter() {
   const q = $('q').value.trim().toLowerCase(), mode = document.querySelector('[name=mode]:checked').value
-  const list = data.themes.filter((t) => (!mode || (mode === 'light') === t.light) && (!q || (t.name + ' ' + t.slug + ' ' + t.author).toLowerCase().includes(q)))
-  $('grid').replaceChildren(...list.map(card))
+  const desktop = document.querySelector('[name=kind]:checked').value === 'desktop'
+  const hit = (...words) => !q || words.join(' ').toLowerCase().includes(q)
+  const list = desktop
+    ? data.desktop.filter((t) => (!mode || !t.appearance || t.appearance === 'both' || t.appearance === mode) && hit(t.name, t.author, t.description)).map(scene)
+    : data.themes.filter((t) => (!mode || (mode === 'light') === t.light) && hit(t.name, t.slug, t.author)).map(card)
+  $('grid').className = desktop ? 'grid desktop' : 'grid'
+  $('grid').replaceChildren(...list)
+  $('more-h').hidden = $('more').hidden = desktop || !data.linked.length
 }
 
 function open(t) {
@@ -184,13 +225,12 @@ const row = (title, href, sub, cmds = []) => el('div', { className: 'row' }, el(
 
 fetch('themes.json').then((r) => r.json()).then((d) => {
   data = d
-  $('all').textContent = 'All ' + d.themes.length
+  $('n-desktop').textContent = 'Desktop ' + d.desktop.length
+  $('n-terminal').textContent = 'Terminal ' + d.themes.length
+  $('more').replaceChildren(...d.linked.map((s) => row(s.repo.split('/')[1], gh(s.repo), `${s.repo.split('/')[0]} · ${s.count} themes`)))
   filter()
   $('q').oninput = filter
-  document.querySelectorAll('[name=mode]').forEach((r) => (r.onchange = filter))
-  $('more').replaceChildren(...d.linked.map((s) => row(s.repo.split('/')[1], gh(s.repo), `${s.repo.split('/')[0]} · ${s.count} themes`)))
-  $('more-h').hidden = !d.linked.length
-  $('desktop').replaceChildren(...d.desktop.map((t) => row(t.name, gh(t.repo) + (t.path ? '/tree/HEAD/' + t.path : ''), t.author, t.install)))
+  document.querySelectorAll('[name=mode], [name=kind]').forEach((r) => (r.onchange = filter))
   $('tools').replaceChildren(...d.tools.map((t) => row(t.name, t.url ?? gh(t.repo), t.author)))
 })
 </script>

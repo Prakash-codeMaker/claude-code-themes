@@ -108,6 +108,11 @@ await rm(at('licenses/'), { recursive: true, force: true })
 await mkdir(at('themes/'), { recursive: true })
 await mkdir(at('licenses/'), { recursive: true })
 
+// Two themes that paint the preview almost the same count as one: the first (most-starred source) stays.
+const SIGHT = ['claude', 'text', 'success', 'error', 'warning', 'promptBorder', 'permission', 'planMode', 'autoAccept', 'diffAdded', 'diffRemoved', 'userMessageBackground']
+const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16))
+const alike = (a, b) => a.light === b.light && SIGHT.reduce((sum, k) => sum + Math.hypot(...rgb(a.colors[k]).map((n, i) => n - rgb(b.colors[k])[i])), 0) / SIGHT.length < 40
+
 const slugs = new Set()
 const hashes = new Set()
 const themes = []
@@ -119,6 +124,10 @@ for (const s of found) {
   for (const t of s.themes) {
     if (hashes.has(t.hash)) continue
     hashes.add(t.hash)
+    const light = t.theme.base.startsWith('light')
+    const colors = { ...DEFAULTS[light ? 'light' : 'dark'] }
+    for (const k of Object.keys(colors)) if (t.theme.overrides[k]) colors[k] = toHex(t.theme.overrides[k]) ?? colors[k]
+    if (themes.some((o) => alike(o, { light, colors }))) continue
     s.kept = (s.kept ?? 0) + 1
     const clean = t.file.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'theme'
     let slug = clean
@@ -126,9 +135,6 @@ for (const s of found) {
     for (let n = 2; slugs.has(slug); n++) slug = `${clean}-${n}`
     slugs.add(slug)
     await writeFile(at(`themes/${slug}.json`), JSON.stringify(t.theme, null, 2) + '\n')
-    const light = t.theme.base.startsWith('light')
-    const colors = { ...DEFAULTS[light ? 'light' : 'dark'] }
-    for (const k of Object.keys(colors)) if (t.theme.overrides[k]) colors[k] = toHex(t.theme.overrides[k]) ?? colors[k]
     themes.push({ slug, name: t.theme.name, author: owner, repo: s.repo, url: `https://github.com/${s.repo}/blob/${s.branch}/${t.path}`, license: s.license, light, colors, base: t.theme.base, overrides: t.theme.overrides })
   }
 }
@@ -142,7 +148,7 @@ await writeFile(at('docs/themes.json'), JSON.stringify(data) + '\n')
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
 const byRepo = Object.values(Object.groupBy(themes, (t) => t.repo))
 const picks = []
-for (let i = 0; picks.length < 24 && byRepo.some((g) => g[i]); i++) for (const g of byRepo) if (g[i] && picks.length < 24) picks.push(g[i])
+for (let i = 0; picks.length < 12 && byRepo.some((g) => g[i]); i++) for (const g of byRepo) if (g[i] && picks.length < 12) picks.push(g[i])
 const W = 208, H = 132, GAP = 12, COLS = 4
 const rows = Math.ceil(picks.length / COLS)
 const card = (t, i) => {
@@ -160,8 +166,14 @@ const card = (t, i) => {
 }
 await writeFile(at('docs/gallery.svg'), `<svg xmlns="http://www.w3.org/2000/svg" width="${COLS * (W + GAP) - GAP}" height="${rows * (H + GAP) - GAP}" viewBox="0 0 ${COLS * (W + GAP) - GAP} ${rows * (H + GAP) - GAP}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">\n${picks.map(card).join('\n')}\n</svg>\n`)
 
+const img = (p) => (p.startsWith('http') ? p : 'docs/' + p)
+const cell = (t) => `<td width="33%" align="center"><a href="https://github.com/${t.repo}${t.path ? '/tree/HEAD/' + t.path : ''}"><img src="${img(t.preview)}" alt="${esc(t.name)}"></a><br><b>${esc(t.name)}</b><br><sub>${esc(t.author)}</sub></td>`
+const shown = sources.desktop.slice(0, 9)
+const showcase = ['<table>', ...[0, 3, 6].map((i) => '<tr>' + shown.slice(i, i + 3).map(cell).join('') + '</tr>'), '</table>'].join('\n')
+await writeFile(at('README.md'), (await readFile(at('README.md'), 'utf8')).replace(/(<!-- desktop -->)[\s\S]*(<!-- \/desktop -->)/, `$1\n${showcase}\n$2`))
+
 const table = [
-  `**${themes.length} terminal themes** in one install · **${linked.reduce((n, s) => n + s.count, 0)} more** linked · **${sources.desktop.length} desktop themes** linked`,
+  `**${sources.desktop.length} desktop themes** · **${themes.length} terminal themes** in one install · **${linked.reduce((n, s) => n + s.count, 0)} more** linked`,
   '',
   '| Source | Themes | Licence | |',
   '| --- | ---: | --- | --- |',
