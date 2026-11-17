@@ -155,7 +155,7 @@ const card = (t, i) => {
 <text x="12" y="124" fill="${c.autoAccept}">⏵⏵ accept edits <tspan fill="${c.planMode}">⏸ plan</tspan> <tspan fill="${c.warning}">▲</tspan> <tspan fill="${c.error}">✗</tspan></text>
 </g>`
 }
-await writeFile(at('docs/gallery.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${COLS * (W + GAP) - GAP} ${rows * (H + GAP) - GAP}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">\n${picks.map(card).join('\n')}\n</svg>\n`)
+await writeFile(at('docs/gallery.svg'), `<svg xmlns="http://www.w3.org/2000/svg" width="${COLS * (W + GAP) - GAP}" height="${rows * (H + GAP) - GAP}" viewBox="0 0 ${COLS * (W + GAP) - GAP} ${rows * (H + GAP) - GAP}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">\n${picks.map(card).join('\n')}\n</svg>\n`)
 
 const table = [
   `**${themes.length} terminal themes** in one install · **${linked.reduce((n, s) => n + s.count, 0)} more** linked · **${sources.desktop.length} desktop themes** linked`,
