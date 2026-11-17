@@ -1,0 +1,26 @@
+{
+  "name": "Ink and Ember",
+  "base": "dark",
+  "overrides": {
+    "claude": "#FF8A3D",
+    "claudeShimmer": "#FFB27A",
+    "text": "#EADFCF",
+    "inactive": "#A39482",
+    "subtle": "#4A3F35",
+    "suggestion": "#FFB36B",
+    "permission": "#FFB36B",
+    "success": "#A3BE5B",
+    "error": "#FF6B5E",
+    "warning": "#F2C14E",
+    "diffAdded": "#26301a",
+    "diffRemoved": "#3a1d1a",
+    "diffAddedWord": "#46592a",
+    "diffRemovedWord": "#6e3029",
+    "promptBorder": "#8A6A4F",
+    "planMode": "#7FC4B8",
+    "autoAccept": "#A3BE5B",
+    "bashBorder": "#FF8A3D",
+    "userMessageBackground": "#2a211b",
+    "bashMessageBackgroundColor": "#241b15"
+  }
+}

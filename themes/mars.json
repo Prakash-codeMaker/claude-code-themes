@@ -1,0 +1,29 @@
+{
+  "name": "001-D · Mar   warm coral",
+  "base": "dark",
+  "overrides": {
+    "background": "#121313",
+    "text": "#dfe0e0",
+    "inverseText": "#121313",
+    "subtle": "#979ca3",
+    "inactive": "#979ca3",
+    "thinking": "#979ca3",
+    "promptBorder": "#76797d",
+    "claude": "#fc9d7d",
+    "success": "#68d56f",
+    "error": "#eca39d",
+    "warning": "#e4ae5f",
+    "suggestion": "#98bceb",
+    "permission": "#ff3b30",
+    "permissionShimmer": "#ffaba1",
+    "planMode": "#68cccb",
+    "autoAccept": "#ec96e4",
+    "bashBorder": "#fc9d7d",
+    "diffAdded": "#253225",
+    "diffAddedDimmed": "#1c221c",
+    "diffAddedWord": "#3e543e",
+    "diffRemoved": "#402523",
+    "diffRemovedDimmed": "#2b1c1b",
+    "diffRemovedWord": "#6e3e3a"
+  }
+}

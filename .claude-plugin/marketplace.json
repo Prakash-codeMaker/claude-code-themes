@@ -1,0 +1,12 @@
+{
+  "name": "claude-code-themes",
+  "owner": { "name": "anhnt256" },
+  "plugins": [
+    {
+      "name": "themes",
+      "source": "./",
+      "description": "Every open-licence Claude Code terminal theme in one install. Pick one with /theme.",
+      "keywords": ["theme", "themes", "colors", "color-scheme", "dark-theme", "light-theme"]
+    }
+  ]
+}

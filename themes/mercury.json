@@ -1,0 +1,29 @@
+{
+  "name": "001-L · Mercury  neon blue",
+  "base": "light",
+  "overrides": {
+    "background": "#ffffff",
+    "text": "#0a0a0a",
+    "inverseText": "#ffffff",
+    "subtle": "#737373",
+    "inactive": "#737373",
+    "thinking": "#737373",
+    "promptBorder": "#d4d4d4",
+    "claude": "#33a7ff",
+    "bashBorder": "#33a7ff",
+    "suggestion": "#33a7ff",
+    "permission": "#d9302e",
+    "permissionShimmer": "#ef675c",
+    "success": "#00ab6c",
+    "error": "#e91e2e",
+    "warning": "#e8b600",
+    "planMode": "#00a6d0",
+    "autoAccept": "#cc1596",
+    "diffAdded": "#cceee2",
+    "diffAddedDimmed": "#e3f6ef",
+    "diffAddedWord": "#94dcc1",
+    "diffRemoved": "#fbd2d5",
+    "diffRemovedDimmed": "#fde6e8",
+    "diffRemovedWord": "#f6a0a7"
+  }
+}

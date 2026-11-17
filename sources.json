@@ -1,0 +1,452 @@
+{
+  "terminal": [
+    "livlign/ccthemes",
+    "notgabriels-sys/claude-code-50-dark-themes",
+    "matcra587/claude-themes",
+    "CodySpooner/ClaudeCodeThemes",
+    "danishmughal/claude-code-themes",
+    "whirlwin/claude-themes",
+    "khtdr/claude-code-themes",
+    "rezzminator/claude-code-tokyo-night",
+    "chrisathook/claude-code-cli-themes",
+    "nils44344/claude-code-themes",
+    "Piebald-AI/claude-code-themes",
+    "stefangruehn/claude-code-theme",
+    "LinXiaoTao/themecc",
+    "Shahfarzane/claude-code-themes",
+    "kamegg13/claude-code-themes",
+    "bgmacris/claude-code-themes",
+    "amondnet/claude-code-themes",
+    "cristiand395/claude-code-themes",
+    "codigrate/claude-code-themes",
+    "PerspicaciousGuy/ClaudeCodeThemes",
+    "rafsanmuhammed/claude-code-themes",
+    "basicScandal/claude-skins",
+    "jasonrsmith/claude-code-theme",
+    "reidlaird/claude-code-theme"
+  ],
+  "desktop": [
+    {
+      "name": "Theme Examples (all 20 scenes)",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "both",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official"
+      ]
+    },
+    {
+      "name": "Honu Lagoon",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "light",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme honu-lagoon"
+      ]
+    },
+    {
+      "name": "Koi Mosaic",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "light",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme koi-mosaic"
+      ]
+    },
+    {
+      "name": "Halftone Dawn",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "light",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme halftone-dawn"
+      ]
+    },
+    {
+      "name": "Halftone Dusk",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme halftone-dusk"
+      ]
+    },
+    {
+      "name": "Plotter Tide",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "light",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme plotter-tide"
+      ]
+    },
+    {
+      "name": "Plotter Tide, Night",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme plotter-tide-night"
+      ]
+    },
+    {
+      "name": "Dither Dunes",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "light",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme dither-dunes"
+      ]
+    },
+    {
+      "name": "Dither Dunes Night",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme dither-dunes-night"
+      ]
+    },
+    {
+      "name": "Paper Garden",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "light",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme paper-garden"
+      ]
+    },
+    {
+      "name": "Paper Garden, Kraft",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme paper-garden-kraft"
+      ]
+    },
+    {
+      "name": "Night Reef",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme night-reef"
+      ]
+    },
+    {
+      "name": "Snow Pines",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme snow-pines"
+      ]
+    },
+    {
+      "name": "Braille Stars",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme braille-stars"
+      ]
+    },
+    {
+      "name": "Block Clouds",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme teletext-clouds"
+      ]
+    },
+    {
+      "name": "Vector Range",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme vector-range"
+      ]
+    },
+    {
+      "name": "Departure Board",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme departure-board"
+      ]
+    },
+    {
+      "name": "Blueprint",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme blueprint"
+      ]
+    },
+    {
+      "name": "Deep Water",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme deep-water"
+      ]
+    },
+    {
+      "name": "Aurora",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme aurora"
+      ]
+    },
+    {
+      "name": "Ember",
+      "author": "Anthropic",
+      "repo": "anthropics/claude-plugins-official",
+      "path": "plugins/theme-examples",
+      "appearance": "dark",
+      "install": [
+        "/plugin install theme-examples@claude-plugins-official",
+        "/custom-theme ember"
+      ]
+    },
+    {
+      "name": "Snowfall",
+      "author": "Brezn610",
+      "repo": "Brezn610/snowfall-theme",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add Brezn610/snowfall-theme",
+        "/plugin install snowfall-theme@snowfall"
+      ]
+    },
+    {
+      "name": "Rainy Window",
+      "author": "ishuagrawal",
+      "repo": "ishuagrawal/claude-code-themes",
+      "appearance": "both",
+      "install": [
+        "/plugin marketplace add ishuagrawal/claude-code-themes",
+        "/plugin install rainy-window@claude-code-themes"
+      ]
+    },
+    {
+      "name": "Backdrop",
+      "author": "AkkiCode06",
+      "repo": "AkkiCode06/claude-backdrops",
+      "install": [
+        "/plugin marketplace add AkkiCode06/claude-backdrops",
+        "/plugin install gradient-flow@claude-backdrops"
+      ]
+    },
+    {
+      "name": "Cosmos",
+      "author": "markimoo09",
+      "repo": "markimoo09/claude-code-themes",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add markimoo09/claude-code-themes",
+        "/plugin install looks@local-looks",
+        "/custom-theme cosmos"
+      ]
+    },
+    {
+      "name": "Pixel Cats",
+      "author": "markimoo09",
+      "repo": "markimoo09/claude-code-themes",
+      "appearance": "light",
+      "install": [
+        "/plugin marketplace add markimoo09/claude-code-themes",
+        "/plugin install looks@local-looks",
+        "/custom-theme pixel-cats"
+      ]
+    },
+    {
+      "name": "Dark Fleet",
+      "author": "markimoo09",
+      "repo": "markimoo09/claude-code-themes",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add markimoo09/claude-code-themes",
+        "/plugin install looks@local-looks",
+        "/custom-theme dark-fleet"
+      ]
+    },
+    {
+      "name": "Neon Tokyo",
+      "author": "markimoo09",
+      "repo": "markimoo09/claude-code-themes",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add markimoo09/claude-code-themes",
+        "/plugin install looks@local-looks",
+        "/custom-theme neon-tokyo"
+      ]
+    },
+    {
+      "name": "Marina Bay",
+      "author": "markimoo09",
+      "repo": "markimoo09/claude-code-themes",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add markimoo09/claude-code-themes",
+        "/plugin install looks@local-looks",
+        "/custom-theme marina-bay"
+      ]
+    },
+    {
+      "name": "Holo Damascus",
+      "author": "bassonrichard",
+      "repo": "bassonrichard/holo-damascus",
+      "appearance": "both",
+      "install": [
+        "/plugin marketplace add bassonrichard/holo-damascus",
+        "/plugin install holo-damascus@holo-damascus"
+      ]
+    },
+    {
+      "name": "Hive Night",
+      "author": "Errr0rr404",
+      "repo": "Errr0rr404/hive-night",
+      "install": [
+        "/plugin marketplace add Errr0rr404/hive-night",
+        "/plugin install hive-night@hive-night"
+      ]
+    },
+    {
+      "name": "SpaceMolt",
+      "author": "SpaceMolt",
+      "repo": "SpaceMolt/claude-code-theme",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add SpaceMolt/claude-code-theme",
+        "/plugin install spacemolt-theme@spacemolt"
+      ]
+    },
+    {
+      "name": "Backdrops",
+      "author": "donvito",
+      "repo": "donvito/skillsbento",
+      "path": "plugins/backdrops",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add donvito/skillsbento",
+        "/plugin install backdrops@skillsbento"
+      ]
+    },
+    {
+      "name": "Bubblegum Fizz",
+      "author": "HemalathaMadeswaran18",
+      "repo": "HemalathaMadeswaran18/bubblegum-fizz",
+      "appearance": "both",
+      "install": [
+        "/plugin marketplace add HemalathaMadeswaran18/bubblegum-fizz",
+        "/plugin install bubblegum-fizz@bubblegum-fizz"
+      ]
+    },
+    {
+      "name": "Aurora",
+      "author": "00015972",
+      "repo": "00015972/claude-aurora",
+      "appearance": "both",
+      "install": [
+        "/plugin marketplace add 00015972/claude-aurora",
+        "/plugin install aurora@claude-aurora"
+      ]
+    },
+    {
+      "name": "One Dark Pro",
+      "author": "Verschnupft",
+      "repo": "Verschnupft/claude-one-dark-pro",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add Verschnupft/claude-one-dark-pro",
+        "/plugin install one-dark-pro@claude-one-dark-pro"
+      ]
+    },
+    {
+      "name": "Christmas Night & City Tour",
+      "author": "kimthangk",
+      "repo": "kimthangk/claude-theme-lewell",
+      "appearance": "dark",
+      "install": [
+        "/plugin marketplace add kimthangk/claude-theme-lewell",
+        "/plugin install lewell-theme@claude-theme-lewell"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "Theme Generator",
+      "author": "denesszabo",
+      "repo": "denesszabo/claude-code-theme-generator",
+      "url": "https://cc-theme-generator.netlify.app/"
+    },
+    {
+      "name": "Theme Editor",
+      "author": "FEIF-L",
+      "repo": "FEIF-L/claude-code-theme-editor"
+    },
+    {
+      "name": "Theme Designer",
+      "author": "aleslanger",
+      "repo": "aleslanger/claude-code-theme-designer"
+    },
+    {
+      "name": "Claude Backdrops",
+      "author": "AkkiCode06",
+      "repo": "AkkiCode06/claude-backdrops"
+    },
+    {
+      "name": "tweakcc",
+      "author": "Piebald-AI",
+      "repo": "Piebald-AI/tweakcc"
+    }
+  ]
+}

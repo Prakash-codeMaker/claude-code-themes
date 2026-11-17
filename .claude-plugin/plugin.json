@@ -1,0 +1,10 @@
+{
+  "name": "themes",
+  "version": "1.0.0",
+  "description": "Every open-licence Claude Code terminal theme in one install. Pick one with /theme.",
+  "author": { "name": "anhnt256" },
+  "homepage": "https://anhnt256.github.io/claude-code-themes/",
+  "repository": "https://github.com/anhnt256/claude-code-themes",
+  "license": "MIT",
+  "keywords": ["theme", "themes", "colors", "color-scheme", "dark-theme", "light-theme"]
+}
