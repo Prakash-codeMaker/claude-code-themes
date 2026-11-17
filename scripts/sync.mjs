@@ -43,8 +43,11 @@ function toHex(v) {
   return ANSI[v.slice(5)] ?? null
 }
 
+async function get(url, init, tries = 4) {
+  try { return await fetch(url, init) } catch (e) { if (tries < 2) throw e; return get(url, init, tries - 1) }
+}
 async function gh(path) {
-  const res = await fetch('https://api.github.com/' + path, { headers })
+  const res = await get('https://api.github.com/' + path, { headers })
   if (res.status === 404) return null
   if (!res.ok) throw new Error(`${path}: ${res.status}`)
   return res.json()
@@ -77,7 +80,7 @@ async function readSource(repo) {
   const paths = (tree?.tree ?? []).map((t) => t.path).filter((p) => /\.json$/i.test(p) && !SKIP.test('/' + p) && !/(^|\/)(package(-lock)?|tsconfig|plugin|marketplace|hooks|settings)[^/]*\.json$/i.test(p)).slice(0, 400)
   const seen = new Set()
   const themes = (await pool(paths, 8, async (path) => {
-    const res = await fetch(`https://raw.githubusercontent.com/${repo}/${info.default_branch}/${path.split('/').map(encodeURIComponent).join('/')}`)
+    const res = await get(`https://raw.githubusercontent.com/${repo}/${info.default_branch}/${path.split('/').map(encodeURIComponent).join('/')}`)
     if (!res.ok) return null
     const file = path.split('/').pop().replace(/\.json$/i, '')
     const theme = parseTheme(await res.text(), file)
