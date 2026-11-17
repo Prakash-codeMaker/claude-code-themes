@@ -141,7 +141,7 @@ for (const s of found) {
 themes.sort((a, b) => a.name.localeCompare(b.name) || a.slug.localeCompare(b.slug))
 
 const linked = found.filter((s) => !s.copied).map((s) => ({ repo: s.repo, count: s.themes.length, stars: s.stars, license: s.license }))
-const data = { repo: ME, defaults: DEFAULTS, themes, linked, desktop: sources.desktop, tools: sources.tools }
+const data = { repo: ME, defaults: DEFAULTS, themes, linked, desktop: sources.desktop }
 await writeFile(at('docs/themes.json'), JSON.stringify(data) + '\n')
 
 // README hero: the same mock terminal the site draws, as one static SVG.

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · Claude Code Themes</title>
+<meta name="description" content="Design a Claude Code theme, preview it live, and install it.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='14' fill='%23d77757'>✻</text></svg>">
+<style>
+:root { --page: #fff; --ink: #111; --dim: #6b6b6b; --line: #e6e6e6; --field: #f5f5f4; --accent: #d77757; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --page: #0e0e10; --ink: #ededed; --dim: #8b8b8b; --line: #26262a; --field: #18181b; } }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; display: grid; grid-template-rows: auto 1fr; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+button, select, .btn { cursor: pointer; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; background: none; text-decoration: none; white-space: nowrap; }
+button:hover, select:hover, .btn:hover { border-color: var(--dim); }
+button:disabled { opacity: .4; cursor: default; }
+button.main { background: var(--ink); color: var(--page); border-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+input[type=text], input[type=search] { background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; min-width: 0; }
+input[type=color] { width: 30px; height: 30px; padding: 0; border: 1px solid var(--line); border-radius: 8px; background: none; cursor: pointer; flex: none; }
+
+header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+header .home { text-decoration: none; font-weight: 700; font-size: 16px; margin-right: 4px; }
+header .home span { color: var(--accent); }
+#name { font-weight: 600; width: 180px; }
+.gap { flex: 1; }
+.seed { display: flex; gap: 6px; align-items: center; }
+
+.work { display: grid; grid-template-columns: 340px 1fr; min-height: 0; }
+aside { border-right: 1px solid var(--line); overflow-y: auto; padding: 12px; }
+aside input[type=search] { width: 100%; margin-bottom: 8px; }
+details { border-bottom: 1px solid var(--line); }
+summary { padding: 8px 2px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
+summary small { color: var(--dim); font-weight: 400; }
+.tok { display: grid; grid-template-columns: 30px 1fr 84px 22px; gap: 8px; align-items: center; padding: 3px 0; }
+.tok.lit { background: var(--field); border-radius: 8px; }
+.tok .label { min-width: 0; line-height: 1.25; }
+.tok .label b { display: block; font-weight: 500; font-size: 12px; overflow: hidden; text-overflow: ellipsis; }
+.tok .label small { display: block; color: var(--dim); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tok input[type=text] { width: 84px; font-size: 12px; padding: 5px 6px; }
+.tok .undo { border: 0; padding: 0; width: 22px; height: 22px; color: var(--dim); visibility: hidden; }
+.tok.set .undo { visibility: visible; }
+.tok:not(.set) input[type=text] { color: var(--dim); }
+
+main { overflow-y: auto; padding: 20px; min-width: 0; }
+.stage { max-width: 860px; margin: 0 auto; }
+.term { background: var(--terminal); color: var(--text); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; font: 13px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-x: auto; white-space: pre; }
+.term [data-t] { cursor: pointer; }
+.term .row { display: block; padding: 0 6px; margin: 0 -6px; }
+.term .box { display: block; border: 1px solid; border-radius: 6px; padding: 4px 10px; margin: 6px 0; }
+.term .bash { display: block; border-left: 2px solid; padding: 0 8px; }
+.term .badge { padding: 0 6px; border-radius: 3px; }
+.term .meter { display: inline-block; width: 160px; height: 8px; border-radius: 4px; vertical-align: middle; overflow: hidden; }
+.term .meter i { display: block; width: 62%; height: 100%; }
+.term .flash { outline: 2px solid var(--accent); outline-offset: 1px; }
+.under { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 12px 0 0; color: var(--dim); font-size: 13px; }
+.under label { display: flex; gap: 6px; align-items: center; }
+#checks { margin-top: 20px; }
+#checks h2 { font-size: 14px; margin: 0 0 8px; display: flex; gap: 10px; align-items: center; }
+.pair { display: flex; gap: 10px; align-items: center; padding: 6px 0; border-top: 1px solid var(--line); font-size: 13px; }
+.pair .chip { padding: 2px 10px; border-radius: 6px; font-family: ui-monospace, monospace; font-size: 12px; }
+.pair span:nth-child(2) { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.pair button { padding: 2px 10px; }
+#done { margin-top: 20px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+#done p { margin: 0 0 8px; }
+.copy { display: block; width: 100%; text-align: left; white-space: pre-wrap; word-break: break-all; background: var(--field); border-radius: 8px; padding: 10px 12px; font-size: 12px; max-height: 120px; overflow: auto; }
+#toast { position: fixed; bottom: 24px; left: 50%; translate: -50%; background: var(--ink); color: var(--page); padding: 8px 16px; border-radius: 99px; opacity: 0; transition: opacity .15s; pointer-events: none; z-index: 9; }
+#toast.on { opacity: 1; }
+[hidden] { display: none !important; }
+body.drop::after { content: 'Drop a theme file'; position: fixed; inset: 12px; border: 2px dashed var(--accent); border-radius: 16px; display: grid; place-items: center; font-size: 20px; background: color-mix(in srgb, var(--page) 85%, transparent); z-index: 8; }
+@media (max-width: 820px) { body { display: block; } .work { display: block; } aside { border-right: 0; border-top: 1px solid var(--line); } main { padding: 16px; } #name { flex: 1 1 140px; } .gap { display: none; } }
+</style>
+</head>
+<body>
+<header>
+  <a class="home" href="./" aria-label="All themes"><span>✻</span> Themes</a>
+  <input type="text" id="name" aria-label="Theme name" autocomplete="off" spellcheck="false">
+  <select id="base" aria-label="Base"></select>
+  <span class="seed">
+    <input type="color" id="seed" value="#d77757" aria-label="Seed colour">
+    <button id="gen">Generate</button>
+    <button id="rand" aria-label="Random theme">Random</button>
+  </span>
+  <span class="gap"></span>
+  <button id="undo" aria-label="Undo">↶</button>
+  <button id="redo" aria-label="Redo">↷</button>
+  <button id="import">Import</button>
+  <button id="share">Share</button>
+  <button id="download">Download</button>
+  <button id="install" class="main">Install</button>
+  <input type="file" id="file" accept=".json,application/json" hidden>
+</header>
+
+<div class="work">
+  <aside>
+    <input type="search" id="find" placeholder="Find a colour" aria-label="Find a colour" autocomplete="off">
+    <div id="groups"></div>
+  </aside>
+  <main>
+    <div class="stage">
+      <div class="term" id="term"></div>
+      <div class="under">
+        <label><input type="color" id="bg" aria-label="Terminal background"> Terminal background</label>
+        <span id="count"></span>
+      </div>
+      <section id="checks" hidden>
+        <h2><span id="checks-n"></span><button id="fix-all">Fix all</button></h2>
+        <div id="pairs"></div>
+      </section>
+      <section id="done" hidden>
+        <p id="done-text"></p>
+        <button class="copy mono" id="done-cmd"></button>
+      </section>
+    </div>
+  </main>
+</div>
+<div id="toast" role="status"></div>
+
+<script type="module">
+import { BASES, isLight, TERMINAL, toHex, toOklch, oklch, slug, sanitize, stringify, resolve, generate, check, fix, pack, unpack } from './lib.js'
+
+const $ = (id) => document.getElementById(id)
+const el = (tag, props = {}, ...kids) => { const n = Object.assign(document.createElement(tag), props); n.append(...kids); return n }
+const toast = (text) => { const t = $('toast'); t.textContent = text; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 1800) }
+const copy = async (text, said = 'Copied') => { try { await navigator.clipboard.writeText(text); toast(said) } catch { toast('Copy failed') } }
+const store = { get: (k) => { try { return localStorage.getItem(k) } catch { return null } }, set: (k, v) => { try { localStorage.setItem(k, v) } catch {} } }
+
+const tokens = await fetch('tokens.json').then((r) => r.json())
+// Running from the CLI, the page can write the theme straight into Claude Code's folder.
+const local = await fetch('api/status').then((r) => (r.ok ? r.json() : null)).catch(() => null)
+
+let theme = { name: 'My Theme', base: 'dark', overrides: {} }
+let terminal = null // null follows the base
+const past = [], future = []
+
+// The mock session. f = text colour, b = background, d = border; each names the token that paints it.
+const SCENE = `
+<span data-f="claude">✻</span> Welcome back!  <span class="badge" data-f="inverseText" data-b="claude">new</span>
+<span data-f="inactive">  /help for help · <span data-f="inactiveShimmer">2s ago</span></span>
+<span data-f="subtle">────────────────────────────────────────────────</span>
+<span class="row" data-b="userMessageBackground"><span data-f="briefLabelYou">You</span>     &gt; fix the login bug</span><span class="row" data-b="userMessageBackgroundHover"><span data-f="inactive">hover</span>   &gt; and add a test</span>
+<span data-f="briefLabelClaude">Claude</span>  <span data-f="claude">●</span> I'll update the check in <span data-b="selectionBg">auth.ts</span>.
+<span data-f="success">●</span> Update(src/auth.ts)
+<span data-f="inactive">  ⎿ 1 addition, 1 removal</span>
+<span class="row" data-b="diffRemovedDimmed">  12   const user = await find(id)</span><span class="row" data-b="diffRemoved">  13 - const ok = <span data-b="diffRemovedWord">false</span></span><span class="row" data-b="diffAdded">  13 + const ok = <span data-b="diffAddedWord">true</span></span><span class="row" data-b="diffAddedDimmed">  14   return ok</span>
+<span class="bash" data-d="bashBorder" data-b="bashMessageBackgroundColor">! npm test</span><span data-f="success">● 12 passed</span>  <span data-f="error">● 1 failed</span>  <span data-f="warning">▲ 2 warn</span><span data-f="warningShimmer">ings</span>  <span data-f="merged">⬤ merged #42</span>
+<span class="row" data-b="memoryBackgroundColor"><span data-f="remember">#</span> always run the tests</span>
+<span data-f="red_FOR_SUBAGENTS_ONLY">●</span> <span data-f="orange_FOR_SUBAGENTS_ONLY">●</span> <span data-f="yellow_FOR_SUBAGENTS_ONLY">●</span> <span data-f="green_FOR_SUBAGENTS_ONLY">●</span> <span data-f="cyan_FOR_SUBAGENTS_ONLY">●</span> <span data-f="blue_FOR_SUBAGENTS_ONLY">●</span> <span data-f="purple_FOR_SUBAGENTS_ONLY">●</span> <span data-f="pink_FOR_SUBAGENTS_ONLY">●</span> subagents   <span data-f="rainbow_red">u</span><span data-f="rainbow_red_shimmer">l</span><span data-f="rainbow_orange">t</span><span data-f="rainbow_orange_shimmer">r</span><span data-f="rainbow_yellow">a</span><span data-f="rainbow_yellow_shimmer">t</span><span data-f="rainbow_green">h</span><span data-f="rainbow_green_shimmer">i</span><span data-f="rainbow_blue">n</span><span data-f="rainbow_blue_shimmer">k</span> <span data-f="rainbow_indigo">h</span><span data-f="rainbow_indigo_shimmer">a</span><span data-f="rainbow_violet">r</span><span data-f="rainbow_violet_shimmer">d</span>
+<span class="box" data-d="permission"><span data-f="permission">Do you want to make this edit?</span> <span data-f="permissionShimmer">·</span>
+<span data-f="suggestion">❯ 1. Yes</span>   2. No</span><span data-f="planMode">⏸ plan mode</span>  <span data-f="autoAccept">⏵⏵ accept edits</span>  <span data-f="fastMode">↯ fa</span><span data-f="fastModeShimmer">st</span>  <span data-f="ide">◉ IDE</span>  <span data-f="effortUltra">✦ ultra</span>
+<span data-f="inactive">usage</span> <span class="meter" data-b="rate_limit_empty"><i data-b="rate_limit_fill"></i></span>
+<span class="box" data-d="promptBorder">&gt; <span data-f="inactive">Try "write a test for auth.ts"</span> <span data-f="promptBorderShimmer">▌</span></span><span data-f="claudeShimmer">✻</span> <span data-f="inactive">Thinking…</span>`.trim()
+
+$('term').innerHTML = SCENE
+for (const n of $('term').querySelectorAll('[data-f],[data-b],[data-d]')) {
+  const { f, b, d } = n.dataset
+  if (f) n.style.color = `var(--${f})`
+  if (b) n.style.background = `var(--${b})`
+  if (d) n.style.borderColor = `var(--${d})`
+  n.dataset.t = f || b || d
+}
+$('term').onclick = (e) => { const n = e.target.closest('[data-t]'); if (n) reveal(e.altKey && n.dataset.b ? n.dataset.b : n.dataset.t) }
+
+// Token list
+const rows = {}
+const byGroup = Object.groupBy(tokens, (t) => t.group)
+$('groups').replaceChildren(...Object.entries(byGroup).map(([group, list], i) => {
+  const count = el('small')
+  const d = el('details', { open: i < 4 }, el('summary', {}, group, count))
+  d.count = count; d.list = list
+  for (const t of list) {
+    const pick = el('input', { type: 'color', ariaLabel: t.token })
+    const text = el('input', { type: 'text', className: 'mono', ariaLabel: t.token + ' value', spellcheck: false, autocomplete: 'off' })
+    const undo = el('button', { className: 'undo', textContent: '×', ariaLabel: 'Use the base colour for ' + t.token, title: 'Use the base colour' })
+    const row = el('div', { className: 'tok' }, pick, el('div', { className: 'label' }, el('b', { textContent: t.token, className: 'mono', title: t.token }), el('small', { textContent: t.label, title: t.label })), text, undo)
+    pick.oninput = () => set(t.token, pick.value, true)
+    pick.onchange = () => commit()
+    text.onchange = () => { const v = text.value.trim(); if (!v) set(t.token, null); else if (toHex(v)) set(t.token, v); else { toast('Not a colour'); paint() } }
+    undo.onclick = () => set(t.token, null)
+    row.onpointerenter = () => flash(t.token, true)
+    row.onpointerleave = () => flash(t.token, false)
+    rows[t.token] = { row, pick, text, group: d }
+    d.append(row)
+  }
+  return d
+}))
+$('find').oninput = () => {
+  const q = $('find').value.trim().toLowerCase()
+  for (const t of tokens) rows[t.token].row.hidden = q && !(t.token + ' ' + t.label + ' ' + t.group).toLowerCase().includes(q)
+  for (const d of $('groups').children) { d.hidden = d.list.every((t) => rows[t.token].row.hidden); if (q) d.open = true }
+}
+function flash(token, on) { for (const n of $('term').querySelectorAll(`[data-f="${token}"],[data-b="${token}"],[data-d="${token}"]`)) n.classList.toggle('flash', on) }
+function reveal(token) {
+  const r = rows[token]; if (!r) return
+  $('find').value = ''; $('find').oninput()
+  r.group.open = true
+  r.row.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  for (const o of Object.values(rows)) o.row.classList.remove('lit')
+  r.row.classList.add('lit'); r.pick.focus({ preventScroll: true })
+}
+
+// State
+const snapshot = () => JSON.stringify([theme, terminal])
+let saved = null
+function commit() {
+  const now = snapshot()
+  if (now === saved) return
+  if (saved) { past.push(saved); if (past.length > 200) past.shift(); future.length = 0 }
+  saved = now
+  store.set('studio', now)
+  history.replaceState(null, '', location.pathname + '#t=' + pack(theme))
+  paint()
+}
+function restore(json) { [theme, terminal] = JSON.parse(json); saved = json; store.set('studio', json); history.replaceState(null, '', location.pathname + '#t=' + pack(theme)); paint() }
+function set(token, value, live) {
+  if (value) theme.overrides[token] = value; else delete theme.overrides[token]
+  live ? paint() : commit()
+}
+function load(next, said) { const t = sanitize(next); if (!t) return toast('Not a theme file'); theme = t; terminal = null; commit(); $('done').hidden = true; if (said) toast(said) }
+
+function paint() {
+  const colors = resolve(theme, tokens)
+  if (terminal) colors.terminal = terminal
+  for (const [k, v] of Object.entries(colors)) $('term').style.setProperty('--' + k, v)
+  if (document.activeElement !== $('name')) $('name').value = theme.name
+  $('base').value = theme.base
+  $('bg').value = colors.terminal
+  for (const t of tokens) {
+    const r = rows[t.token], own = theme.overrides[t.token]
+    r.row.classList.toggle('set', own !== undefined)
+    r.pick.value = colors[t.token]
+    if (document.activeElement !== r.text) r.text.value = own ?? colors[t.token]
+  }
+  for (const d of $('groups').children) { const n = d.list.filter((t) => t.token in theme.overrides).length; d.count.textContent = n ? n + ' set' : '' }
+  const n = Object.keys(theme.overrides).length
+  $('count').textContent = n ? `${n} of ${tokens.length} colours set` : 'Nothing set: this is the base'
+  $('undo').disabled = !past.length; $('redo').disabled = !future.length
+  const bad = check(colors)
+  $('checks').hidden = !bad.length
+  $('checks-n').textContent = bad.length === 1 ? '1 pair is hard to read' : bad.length + ' pairs are hard to read'
+  $('pairs').replaceChildren(...bad.map((p) => {
+    const chip = el('span', { className: 'chip', textContent: 'Aa ' + p.ratio.toFixed(1) }); chip.style.cssText = `color:${colors[p.fg]};background:${colors[p.bg]}`
+    const b = el('button', { textContent: 'Fix' }); b.onclick = () => set(p.fg, fix(colors[p.fg], colors[p.bg], p.min))
+    const name = el('span', { className: 'mono', textContent: `${p.fg} on ${p.bg}` }); name.onclick = () => reveal(p.fg); name.style.cursor = 'pointer'
+    return el('div', { className: 'pair' }, chip, name, b)
+  }))
+}
+
+// Header
+$('base').replaceChildren(...BASES.map((b) => el('option', { textContent: b })))
+$('base').onchange = () => { theme.base = $('base').value; terminal = null; commit() }
+$('name').oninput = () => { theme.name = $('name').value }
+$('name').onchange = () => { theme.name = sanitize({ name: $('name').value, overrides: {} }).name; commit() }
+$('bg').oninput = () => { terminal = $('bg').value; paint() }
+$('bg').onchange = () => commit()
+$('gen').onclick = () => load({ ...generate($('seed').value, { light: isLight(theme.base), name: theme.name }), base: theme.base }, 'Generated from ' + $('seed').value)
+$('seed').onchange = () => $('gen').click()
+$('rand').onclick = () => { $('seed').value = oklch(0.7, 0.05 + Math.random() * 0.13, Math.random() * 360); $('gen').click() }
+$('undo').onclick = () => { if (past.length) { future.push(saved); restore(past.pop()) } }
+$('redo').onclick = () => { if (future.length) { past.push(saved); restore(future.pop()) } }
+$('fix-all').onclick = () => {
+  for (let i = 0; i < 40; i++) { const colors = resolve(theme, tokens); if (terminal) colors.terminal = terminal; const [p] = check(colors); if (!p) break; theme.overrides[p.fg] = fix(colors[p.fg], colors[p.bg], p.min + 0.05) }
+  commit()
+}
+document.addEventListener('keydown', (e) => {
+  if (!(e.ctrlKey || e.metaKey) || e.key.toLowerCase() !== 'z' || e.target.matches('input[type=text], input[type=search]')) return
+  e.preventDefault(); (e.shiftKey ? $('redo') : $('undo')).click()
+})
+
+// In and out
+const read = (text) => { try { load(JSON.parse(text), 'Imported') } catch { toast('Not a theme file') } }
+$('import').onclick = () => $('file').click()
+$('file').onchange = async () => { const f = $('file').files[0]; if (f) read(await f.text()); $('file').value = '' }
+document.addEventListener('dragover', (e) => { e.preventDefault(); document.body.classList.add('drop') })
+document.addEventListener('dragleave', (e) => { if (!e.relatedTarget) document.body.classList.remove('drop') })
+document.addEventListener('drop', async (e) => { e.preventDefault(); document.body.classList.remove('drop'); const f = e.dataTransfer.files[0]; if (f) read(await f.text()) })
+document.addEventListener('paste', (e) => { if (e.target.matches('input')) return; const t = e.clipboardData.getData('text'); if (t.trim().startsWith('{')) read(t) })
+$('share').onclick = () => copy(location.href, 'Link copied')
+$('download').onclick = () => {
+  const a = el('a', { href: URL.createObjectURL(new Blob([stringify(theme)], { type: 'application/json' })), download: slug(theme.name) + '.json' })
+  a.click(); URL.revokeObjectURL(a.href)
+  done(`Saved ${slug(theme.name)}.json. Move it into ~/.claude/themes/, then run /theme in Claude Code.`)
+}
+function done(text, cmd) { $('done').hidden = false; $('done-text').textContent = text; $('done-cmd').hidden = !cmd; $('done-cmd').textContent = cmd ?? ''; $('done').scrollIntoView({ block: 'nearest', behavior: 'smooth' }) }
+$('done-cmd').onclick = () => copy($('done-cmd').textContent)
+$('install').onclick = async () => {
+  const name = slug(theme.name)
+  if (!local) return done('Run this in a terminal, then run /theme in Claude Code.', `npx -y github:anhnt256/claude-code-themes install ${pack(theme)}`)
+  const send = (force) => fetch('api/install', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ theme, slug: name, force }) })
+  let res = await send(false)
+  if (res.status === 409 && confirm(`${name}.json is already installed. Replace it?`)) res = await send(true)
+  if (res.status === 409) return
+  const out = await res.json().catch(() => ({}))
+  res.ok ? done(`Installed to ${out.path}. Run /theme in Claude Code and pick "${theme.name}".`) : toast(out.error ?? 'Install failed')
+}
+
+// Start: a shared link, a theme from the collection, the last session, or the base.
+const q = new URLSearchParams(location.search)
+const fromHash = location.hash.startsWith('#t=') && unpack(location.hash.slice(3))
+if (fromHash) theme = fromHash
+else if (q.get('theme')) {
+  const all = await fetch('themes.json').then((r) => r.json()).catch(() => null)
+  const t = all?.themes.find((x) => x.slug === q.get('theme'))
+  if (t) theme = sanitize(t)
+} else if (!q.has('new') && store.get('studio')) { try { [theme, terminal] = JSON.parse(store.get('studio')) } catch {} }
+if (isLight(theme.base)) $('seed').value = '#c2410c'
+if (theme.overrides.claude && toHex(theme.overrides.claude)) $('seed').value = toHex(theme.overrides.claude)
+history.replaceState(null, '', location.pathname)
+commit()
+</script>
+</body>
+</html>

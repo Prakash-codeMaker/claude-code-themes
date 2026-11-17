@@ -72,6 +72,10 @@ dialog::backdrop { background: #0009; }
 #view p { margin: 4px 0 0; color: var(--dim); font-size: 14px; }
 #v-desc { color: var(--ink) !important; margin: 12px 0 !important; font-size: 15px !important; }
 #v-install .copy { margin-top: 8px; max-width: none; }
+.start { display: flex; flex-wrap: wrap; gap: 8px; }
+.start .copy { width: auto; flex: 0 1 auto; }
+.btn { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; text-decoration: none; font-size: 14px; }
+.btn:hover { border-color: var(--dim); }
 [hidden] { display: none !important; }
 @media (max-width: 700px) { .edit { grid-template-columns: 1fr; } .edit .side { border-left: 0; border-top: 1px solid var(--line); max-height: none; } dialog { overflow-y: auto; } h1 { font-size: 28px; } .bar input[type=search] { flex-basis: 100%; } }
 </style>
@@ -79,8 +83,7 @@ dialog::backdrop { background: #0009; }
 <body>
 <main>
   <h1><span>✻</span> Claude Code Themes</h1>
-  <button class="copy mono" data-copy="/plugin marketplace add anhnt256/claude-code-themes
-/plugin install themes@claude-code-themes">/plugin marketplace add anhnt256/claude-code-themes
+  <div class="start"><button class="copy mono" data-copy="npx github:anhnt256/claude-code-themes">npx github:anhnt256/claude-code-themes</button><a class="btn" href="studio.html?new">New theme</a></div>
 /plugin install themes@claude-code-themes</button>
 
   <div class="bar">
@@ -96,28 +99,8 @@ dialog::backdrop { background: #0009; }
   <h2 id="more-h">More terminal themes</h2>
   <div class="list" id="more"></div>
 
-  <h2>Theme builders</h2>
-  <div class="list" id="tools"></div>
 </main>
 
-<dialog id="dlg" aria-labelledby="name">
-  <div class="edit">
-    <div>
-      <input type="text" id="name" aria-label="Theme name">
-      <p id="credit"></p>
-      <div class="term" id="big"></div>
-      <div class="actions">
-        <button class="main" id="dl">Download</button>
-        <button id="cp">Copy JSON</button>
-        <button id="close">Close</button>
-      </div>
-    </div>
-    <div class="side">
-      <div id="toks"></div>
-      <select id="add" aria-label="Add a colour"></select>
-    </div>
-  </div>
-</dialog>
 <dialog id="view" aria-labelledby="v-name">
   <img id="v-img" alt="">
   <div class="info">
@@ -131,10 +114,8 @@ dialog::backdrop { background: #0009; }
 <div id="toast" role="status"></div>
 
 <template id="mock"><div><span style="color:var(--claude)">✻</span> Welcome back</div><div class="user">&gt; fix the login bug</div><div><span style="color:var(--success)">●</span> Update(auth.ts)</div><div class="del">- const ok = false</div><div class="add">+ const ok = true</div><div class="prompt">&gt;&nbsp;</div><div><span style="color:var(--autoAccept)">⏵⏵ accept edits</span> <span style="color:var(--planMode)">⏸ plan</span> <span style="color:var(--warning)">▲</span> <span style="color:var(--error)">✗</span></div></template>
-<template id="mock-big"><div><span style="color:var(--claude)">✻</span> Welcome back</div><div class="user">&gt; fix the login bug</div><div><span style="color:var(--claude)">●</span> I'll update the check in auth.ts.</div><div><span style="color:var(--success)">●</span> Update(auth.ts)</div><div class="del">- const ok = false</div><div class="add">+ const ok = true</div><div class="bash">! npm test</div><div><span style="color:var(--error)">●</span> 1 failed <span style="color:var(--warning)">▲ 2 warnings</span></div><div style="color:var(--permission)">Do you want to proceed?</div><div style="color:var(--subtle)">esc to interrupt</div><div class="prompt">&gt;&nbsp;</div><div><span style="color:var(--autoAccept)">⏵⏵ accept edits</span> <span style="color:var(--planMode)">⏸ plan mode</span></div></template>
 
 <script>
-const TOKENS = ['claude','claudeShimmer','text','inverseText','inactive','subtle','suggestion','success','error','warning','merged','remember','promptBorder','bashBorder','permission','planMode','autoAccept','fastMode','effortUltra','skill','ide','diffAdded','diffRemoved','diffAddedDimmed','diffRemovedDimmed','diffAddedWord','diffRemovedWord','userMessageBackground','userMessageBackgroundHover','bashMessageBackgroundColor','memoryBackgroundColor','selectionBg','rate_limit_fill','rate_limit_empty','briefLabelClaude','briefLabelYou','red_FOR_SUBAGENTS_ONLY','blue_FOR_SUBAGENTS_ONLY','green_FOR_SUBAGENTS_ONLY','yellow_FOR_SUBAGENTS_ONLY','purple_FOR_SUBAGENTS_ONLY','orange_FOR_SUBAGENTS_ONLY','pink_FOR_SUBAGENTS_ONLY','cyan_FOR_SUBAGENTS_ONLY']
 const $ = (id) => document.getElementById(id)
 const el = (tag, props = {}, ...kids) => { const n = Object.assign(document.createElement(tag), props); n.append(...kids); return n }
 const gh = (repo) => 'https://github.com/' + repo
@@ -143,20 +124,13 @@ function toast(text) { const t = $('toast'); t.textContent = text; t.classList.a
 async function copy(text) { try { await navigator.clipboard.writeText(text); toast('Copied') } catch { toast('Copy failed') } }
 document.addEventListener('click', (e) => { const b = e.target.closest('[data-copy]'); if (b) copy(b.dataset.copy) })
 
-function toHex(v) {
-  v = String(v).trim().toLowerCase()
-  if (/^#[0-9a-f]{6}$/.test(v)) return v
-  if (/^#[0-9a-f]{3}$/.test(v)) return '#' + [...v.slice(1)].map((c) => c + c).join('')
-  const m = v.match(/^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/)
-  return m ? '#' + m.slice(1).map((n) => Math.min(255, +n).toString(16).padStart(2, '0')).join('') : null
-}
 function paint(node, colors) { for (const [k, v] of Object.entries(colors)) node.style.setProperty('--' + k, v) }
 
 let data, current
 function card(t) {
   const term = el('div', { className: 'term' }); term.append($('mock').content.cloneNode(true)); paint(term, t.colors)
   const c = el('button', { className: 'card' }, term, el('footer', {}, el('b', { textContent: t.name }), el('i', { textContent: t.author })))
-  c.onclick = () => open(t)
+  c.onclick = () => (location.href = 'studio.html?theme=' + t.slug)
   return c
 }
 const link = (t) => gh(t.repo) + (t.path ? '/tree/HEAD/' + t.path : '')
@@ -188,38 +162,6 @@ function filter() {
   $('more-h').hidden = $('more').hidden = desktop || !data.linked.length
 }
 
-function open(t) {
-  current = { slug: t.slug, base: t.base, light: t.light, overrides: { ...t.overrides } }
-  $('name').value = t.name
-  $('credit').replaceChildren('by ', el('a', { href: gh(t.author), textContent: t.author, target: '_blank', rel: 'noopener' }), ' · ', el('a', { href: t.url, textContent: 'source', target: '_blank', rel: 'noopener' }), ' · ' + t.license)
-  $('big').replaceChildren($('mock-big').content.cloneNode(true))
-  rows(); repaint(); $('dlg').showModal()
-}
-function repaint() {
-  const colors = { ...data.defaults[current.light ? 'light' : 'dark'] }
-  for (const [k, v] of Object.entries(current.overrides)) { const h = toHex(v); if (h) colors[k] = h }
-  paint($('big'), colors)
-}
-function rows() {
-  $('toks').replaceChildren(...Object.keys(current.overrides).map((k) => {
-    const hex = toHex(current.overrides[k])
-    const pick = el('input', { type: 'color', value: hex ?? '#000000', ariaLabel: k })
-    const text = el('input', { type: 'text', value: current.overrides[k], className: 'mono', ariaLabel: k + ' value', spellcheck: false })
-    pick.oninput = () => { text.value = current.overrides[k] = pick.value; repaint() }
-    text.oninput = () => { const h = toHex(text.value); if (h) { current.overrides[k] = text.value.trim(); pick.value = h; repaint() } }
-    return el('div', { className: 'tok' }, pick, el('span', { textContent: k, className: 'mono', title: k }), text)
-  }))
-  $('add').replaceChildren(el('option', { value: '', textContent: 'Add a colour' }), ...TOKENS.filter((k) => !(k in current.overrides)).map((k) => el('option', { textContent: k })))
-}
-$('add').onchange = (e) => { if (!e.target.value) return; current.overrides[e.target.value] = data.defaults[current.light ? 'light' : 'dark'][e.target.value] ?? '#888888'; rows(); repaint(); $('toks').lastChild.scrollIntoView({ block: 'nearest' }) }
-const json = () => JSON.stringify({ name: $('name').value.trim() || current.slug, base: current.base, overrides: current.overrides }, null, 2) + '\n'
-$('cp').onclick = () => copy(json())
-$('dl').onclick = () => {
-  const a = el('a', { href: URL.createObjectURL(new Blob([json()], { type: 'application/json' })), download: current.slug + '.json' })
-  a.click(); URL.revokeObjectURL(a.href); toast('Save it to ~/.claude/themes/')
-}
-$('close').onclick = () => $('dlg').close()
-$('dlg').onclick = (e) => { if (e.target === $('dlg')) $('dlg').close() }
 
 const row = (title, href, sub, cmds = []) => el('div', { className: 'row' }, el('a', { href, textContent: title, target: '_blank', rel: 'noopener' }), el('small', { textContent: sub }), ...cmds.map((c) => { const b = el('button', { className: 'copy mono', textContent: c }); b.dataset.copy = c; return b }))
 
@@ -231,7 +173,6 @@ fetch('themes.json').then((r) => r.json()).then((d) => {
   filter()
   $('q').oninput = filter
   document.querySelectorAll('[name=mode], [name=kind]').forEach((r) => (r.onchange = filter))
-  $('tools').replaceChildren(...d.tools.map((t) => row(t.name, t.url ?? gh(t.repo), t.author)))
 })
 </script>
 </body>

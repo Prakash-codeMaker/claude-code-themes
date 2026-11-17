@@ -716,33 +716,5 @@
       ],
       "preview": "previews/koi-mosaic.svg"
     }
-  ],
-  "tools": [
-    {
-      "name": "Theme Generator",
-      "author": "denesszabo",
-      "repo": "denesszabo/claude-code-theme-generator",
-      "url": "https://cc-theme-generator.netlify.app/"
-    },
-    {
-      "name": "Theme Editor",
-      "author": "FEIF-L",
-      "repo": "FEIF-L/claude-code-theme-editor"
-    },
-    {
-      "name": "Theme Designer",
-      "author": "aleslanger",
-      "repo": "aleslanger/claude-code-theme-designer"
-    },
-    {
-      "name": "Claude Backdrops",
-      "author": "AkkiCode06",
-      "repo": "AkkiCode06/claude-backdrops"
-    },
-    {
-      "name": "tweakcc",
-      "author": "Piebald-AI",
-      "repo": "Piebald-AI/tweakcc"
-    }
   ]
 }

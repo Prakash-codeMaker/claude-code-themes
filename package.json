@@ -1,0 +1,12 @@
+{
+  "name": "claude-code-themes",
+  "version": "1.0.0",
+  "description": "Design, preview and install Claude Code themes.",
+  "type": "module",
+  "bin": { "claude-code-themes": "cli.mjs" },
+  "files": ["cli.mjs", "docs", "themes", "licenses"],
+  "engines": { "node": ">=21" },
+  "license": "MIT",
+  "repository": "github:anhnt256/claude-code-themes",
+  "homepage": "https://anhnt256.github.io/claude-code-themes/"
+}

@@ -1,8 +1,44 @@
 # Claude Code Themes
 
-Every theme for Claude Code, in one place.
+A studio for Claude Code themes: design one, preview it live, install it. One command, no other repos.
 
-**[Browse the gallery →](https://anhnt256.github.io/claude-code-themes/)**
+```
+npx github:anhnt256/claude-code-themes
+```
+
+That opens the Studio in your browser. **Install** writes the theme straight into Claude Code; run `/theme` to pick it.
+
+**[Try the Studio online →](https://anhnt256.github.io/claude-code-themes/studio.html)** · **[Browse the gallery →](https://anhnt256.github.io/claude-code-themes/)**
+
+## Studio
+
+- **Start anywhere**: a theme from the gallery, one seed colour, a random palette, or a theme file you drop in
+- **Every colour**: all 62 tokens, grouped and searchable; click anything in the preview to find its colour
+- **Live preview** on a dark or light terminal, with the background you actually use
+- **Readable by default**: pairs that are hard to read are listed, with a one-click fix
+- **Undo, redo, share**: the link carries the whole theme
+- **Install** in one click when run locally; online it gives you one command to paste
+
+## Terminal
+
+```
+npx github:anhnt256/claude-code-themes list
+npx github:anhnt256/claude-code-themes preview dracula
+npx github:anhnt256/claude-code-themes install dracula
+npx github:anhnt256/claude-code-themes new "#3b82f6" --name "Blue Sky" --install
+npx github:anhnt256/claude-code-themes check my-theme.json
+```
+
+Or take the whole collection as a plugin:
+
+```
+/plugin marketplace add anhnt256/claude-code-themes
+/plugin install themes@claude-code-themes
+```
+
+[![Terminal themes](docs/gallery.svg)](https://anhnt256.github.io/claude-code-themes/)
+
+Themes that look alike are counted once. [THEMES.md](THEMES.md) lists each one with its author and source.
 
 ## Desktop app
 
@@ -15,19 +51,6 @@ Every theme for Claude Code, in one place.
 <!-- /desktop -->
 
 The [gallery](https://anhnt256.github.io/claude-code-themes/) has all of them, each with its author and install command.
-
-## Terminal
-
-[![Terminal themes](docs/gallery.svg)](https://anhnt256.github.io/claude-code-themes/)
-
-```
-/plugin marketplace add anhnt256/claude-code-themes
-/plugin install themes@claude-code-themes
-```
-
-Then run `/theme`. To take one theme only, copy its file from [`themes/`](themes) into `~/.claude/themes/`.
-
-Themes that look alike are counted once. [THEMES.md](THEMES.md) lists each one with its author and source.
 
 ## Sources
 
@@ -55,24 +78,14 @@ Themes that look alike are counted once. [THEMES.md](THEMES.md) lists each one w
 
 Themes under an open licence are included, each with its licence in [`licenses/`](licenses). The rest are linked from the gallery and stay in their own repos.
 
-## Make your own
-
-- `/theme` → **New custom theme**, built into Claude Code
-- Any terminal theme in the gallery opens in a colour editor
-- [claude-backdrops](https://github.com/AkkiCode06/claude-backdrops), custom backdrops for the desktop app
-- [claude-code-theme-generator](https://github.com/denesszabo/claude-code-theme-generator), a browser editor with JSON export
-- [claude-code-theme-editor](https://github.com/FEIF-L/claude-code-theme-editor), a visual editor for every colour token
-- [claude-code-theme-designer](https://github.com/aleslanger/claude-code-theme-designer), design and install from the terminal
-- [tweakcc](https://github.com/Piebald-AI/tweakcc), for deeper changes to Claude Code itself
-
 ## Add a theme
 
-Add your repo to [`sources.json`](sources.json) and open a pull request: `terminal` for a repo of colour themes, `desktop` for a desktop theme with a preview image.
+Make it in the Studio, save the file into [`themes/`](themes) and open a pull request. To add a whole repo of themes, add it to [`sources.json`](sources.json); the weekly sync picks up every theme file in it.
 
-```
-GITHUB_TOKEN=$(gh auth token) node scripts/sync.mjs
-```
+## Credits
+
+The Studio and CLI are written for this repo. They were shaped by studying three MIT projects: [claude-code-theme-generator](https://github.com/denesszabo/claude-code-theme-generator) by denesszabo, [claude-code-theme-editor](https://github.com/FEIF-L/claude-code-theme-editor) by FEIF-L and [claude-code-theme-designer](https://github.com/aleslanger/claude-code-theme-designer) by aleslanger, whose capture of Claude Code's base colours [`docs/tokens.json`](docs/tokens.json) builds on. Much of the desktop list and the previews in [`docs/previews/`](docs/previews) come from [buildwithclaude](https://github.com/davepoon/buildwithclaude) (MIT); other previews load from their authors' repos.
 
 ## Licence
 
-[MIT](LICENSE) for this repo. Each included theme keeps its author's licence. Much of the desktop list and the previews in [`docs/previews/`](docs/previews) come from [buildwithclaude](https://github.com/davepoon/buildwithclaude) (MIT); other previews load from their authors' repos.
+[MIT](LICENSE) for this repo. Each included theme keeps its author's licence, in [`licenses/`](licenses).
