@@ -12,10 +12,10 @@ That opens the Studio in your browser. **Install** puts what you made straight i
 
 ## Backdrops for the desktop app
 
-An animated scene behind the conversation in the Code tab: a koi pond, falling petals, an aurora, fireflies, stars, snow or rain.
+An animated scene behind the conversation in the Code tab. Illustrated rooms that stay in the margins: a cat asleep on a desk, a puppy with a ball, an evening sky with a train going home, a pinboard of notes and photos. And wide landscapes: a koi pond, falling petals, an aurora, fireflies, stars, snow, rain.
 
 - **Pick a scene and a colour**; the whole picture is painted from that one colour, dark or light
-- **Shuffle** for a new arrangement; set how much is in it and how fast it moves
+- **Shuffle** for a new arrangement, or a different cat or dog; set how much is in it and how fast it moves
 - **See it behind the app** as you change it, with the panel blur and opacity you choose
 - **Install** builds it as a plugin on your machine and adds it to Claude Code; restart the desktop app to see it
 

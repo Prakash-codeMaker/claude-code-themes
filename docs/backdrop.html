@@ -41,7 +41,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 64px; }
 .app .side { left: 0; width: 17%; padding: 3% 1.5%; font-size: clamp(8px, 1.1vw, 13px); display: flex; flex-direction: column; gap: 8%; }
 .app .side i { display: block; height: 5%; min-height: 6px; border-radius: 4px; background: currentColor; opacity: .16; }
 .app .side i:first-child { opacity: .4; width: 60%; }
-.app .chat { left: 30%; right: 13%; padding: 4% 3%; font-size: clamp(9px, 1.25vw, 15px); display: flex; flex-direction: column; gap: 4%; }
+.app .chat { left: 27%; right: 27%; padding: 4% 3%; font-size: clamp(9px, 1.25vw, 15px); display: flex; flex-direction: column; gap: 4%; }
 .app .chat p { margin: 0; }
 .app .chat .you { align-self: flex-end; background: color-mix(in srgb, currentColor 12%, transparent); padding: 1.5% 3%; border-radius: 12px; }
 .app .chat .box { margin-top: auto; border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: 12px; padding: 2.5% 3%; opacity: .7; }
@@ -73,7 +73,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 64px; }
   <div class="scenes" id="scenes"></div>
   <div class="app" id="app">
     <div class="back" id="back"></div>
-    <div class="side"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="chat">
       <p class="you">fix the login bug</p>
       <p>I'll update the check in auth.ts and run the tests.</p>
@@ -106,14 +105,14 @@ const copy = async (text, said = 'Copied') => { try { await navigator.clipboard.
 const store = { get: (k) => { try { return localStorage.getItem(k) } catch { return null } }, set: (k, v) => { try { localStorage.setItem(k, v) } catch {} } }
 const local = await fetch('api/status').then((r) => (r.ok ? r.json() : null)).catch(() => null)
 
-let x = (location.hash.startsWith('#d.') && unpackRecipe(location.hash.slice(1))) || unpackRecipe(store.get('backdrop') ?? '') || recipe({ scene: 'koi', name: 'Koi Pond', color: '#e8743b' })
+let x = (location.hash.startsWith('#d.') && unpackRecipe(location.hash.slice(1))) || unpackRecipe(store.get('backdrop') ?? '') || recipe({ scene: 'cat', name: 'Desk cat', color: '#e8743b' })
 let named = x.name !== SCENES.find((s) => s.id === x.scene).name
 
 // The SVG is built here from sanitised numbers and colours only, so it is safe to place as markup.
 function paint() {
   x = recipe(x)
   const p = palette(x.color, x.light)
-  $('back').innerHTML = draw(x)
+  $('back').innerHTML = draw(x, '', [1440, 900])
   const app = $('app').style
   app.setProperty('--tint', p.tint); app.setProperty('--glass', x.opacity); app.setProperty('--blur', x.blur + 'px'); app.setProperty('--fg', x.light ? '#1a1a1a' : '#f2f2f2')
   if (document.activeElement !== $('name')) $('name').value = x.name
@@ -121,7 +120,7 @@ function paint() {
   for (const k of ['density', 'speed', 'blur', 'opacity']) $(k).value = x[k]
   for (const b of $('scenes').children) {
     b.setAttribute('aria-pressed', b.dataset.id === x.scene)
-    b.firstChild.innerHTML = draw({ ...x, scene: b.dataset.id, density: 0.3 }, '-' + b.dataset.id)
+    b.firstChild.innerHTML = draw({ ...x, scene: b.dataset.id, density: 0.3 }, '-' + b.dataset.id, [1440, 900])
   }
   const code = packRecipe(x)
   store.set('backdrop', code)

@@ -1,8 +1,10 @@
 // Animated backdrops for the Claude desktop app, drawn from a few choices.
 // A backdrop is described by a small recipe; the same recipe always draws the same picture.
 import { oklch, toOklch, toHex, slug } from './lib.js'
+import { ART, STYLE_ART } from './art.js'
 
 export const SCENES = [
+  { id: 'cat', name: 'Desk cat' }, { id: 'dog', name: 'Puppy' }, { id: 'anime', name: 'Evening sky' }, { id: 'pinboard', name: 'Pinboard' },
   { id: 'koi', name: 'Koi pond' }, { id: 'petals', name: 'Petals' }, { id: 'aurora', name: 'Aurora' }, { id: 'fireflies', name: 'Fireflies' },
   { id: 'stars', name: 'Stars' }, { id: 'snow', name: 'Snow' }, { id: 'rain', name: 'Rain' },
 ]
@@ -117,10 +119,23 @@ const STYLE = `.tw{animation:tw 4s ease-in-out infinite}.sway{animation:sway 12s
   + `@media (prefers-reduced-motion:reduce){*{animation:none!important}}`
 
 /** The backdrop as one SVG string. */
-export function draw(input, uid = "") {
+/**
+ * The backdrop as one SVG string. `size` is for previews only: the illustrated scenes are drawn in
+ * window pixels, so a preview gives them a pretend window of [width, height] and scales it to fit.
+ */
+export function draw(input, uid = "", size) {
   const x = recipe(input)
   if (!x) return ''
   const p = palette(x.color, x.light), r = random(x.n * 7 + SCENES.findIndex((s) => s.id === x.scene))
+  if (ART[x.scene]) {
+    const a = ART[x.scene](p, r, { ...x, v: 0.4 + x.speed * 1.2 }, uid)
+    const corner = (at, body) => `<svg x="${at[0]}" y="${at[1]}" overflow="visible">${body}</svg>`
+    const body = `<style>${STYLE}${STYLE_ART}</style><defs><linearGradient id="wall${uid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.top}"/><stop offset="1" stop-color="${p.bottom}"/></linearGradient>${a.defs}</defs>`
+      + `<rect width="100%" height="100%" fill="${a.sky ?? `url(#wall${uid})`}"/>${a.full}${corner([0, 0], a.tl)}${corner(['100%', 0], a.tr)}${corner([0, '100%'], a.bl)}${corner(['100%', '100%'], a.br)}`
+    return size
+      ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size[0]} ${size[1]}" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><svg width="${size[0]}" height="${size[1]}">${body}</svg></svg>`
+      : `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">${body}</svg>`
+  }
   const sky = x.scene === 'koi' ? [oklch(x.light ? 0.86 : 0.3, 0.07, 200), oklch(x.light ? 0.78 : 0.2, 0.08, 215)] : [p.top, p.bottom]
   const grads = `<linearGradient id="sky${uid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky[0]}"/><stop offset="1" stop-color="${sky[1]}"/></linearGradient>`
     + (x.scene === 'aurora' ? [p.a, p.b, p.c].map((c, i) => `<linearGradient id="g${uid}${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity="0"/><stop offset=".35" stop-color="${c}"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></linearGradient>`).join('') : '')

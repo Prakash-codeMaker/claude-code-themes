@@ -172,7 +172,8 @@ const HELP = `
   claude-code-themes uninstall <name>   remove an installed theme
   claude-code-themes new <#colour>      make a theme from one colour [--light] [--name "…"] [--install]
                                         add --scene <name> for a desktop backdrop:
-                                        koi, petals, aurora, fireflies, stars, snow, rain
+                                        cat, dog, anime, pinboard, koi, petals, aurora,
+                                        fireflies, stars, snow, rain
   claude-code-themes check <theme>      report colour pairs that are hard to read
 
   <theme> is a name from the list, a .json file, or a code copied from the Studio.
