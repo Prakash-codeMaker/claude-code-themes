@@ -67,7 +67,7 @@ The [gallery](https://anhnt256.github.io/claude-code-themes/) has all of them, e
 ## Sources
 
 <!-- stats -->
-**57 desktop themes** · **93 terminal themes** in one install · **264 more** linked
+**57 desktop themes** · **92 terminal themes** in one install · **264 more** linked
 
 | Source | Themes | Licence | |
 | --- | ---: | --- | --- |
@@ -77,7 +77,7 @@ The [gallery](https://anhnt256.github.io/claude-code-themes/) has all of them, e
 | [Shahfarzane/claude-code-themes](https://github.com/Shahfarzane/claude-code-themes) | 2 | MIT | included |
 | [bgmacris/claude-code-themes](https://github.com/bgmacris/claude-code-themes) | 2 | MIT | included |
 | [kamegg13/claude-code-themes](https://github.com/kamegg13/claude-code-themes) | 11 | MIT | included |
-| [notgabriels-sys/claude-code-50-dark-themes](https://github.com/notgabriels-sys/claude-code-50-dark-themes) | 9 | MIT | included |
+| [notgabriels-sys/claude-code-50-dark-themes](https://github.com/notgabriels-sys/claude-code-50-dark-themes) | 8 | MIT | included |
 | [rezzminator/claude-code-tokyo-night](https://github.com/rezzminator/claude-code-tokyo-night) | 1 | none | linked |
 | [amondnet/claude-code-themes](https://github.com/amondnet/claude-code-themes) | 8 | MIT | included |
 | [chrisathook/claude-code-cli-themes](https://github.com/chrisathook/claude-code-cli-themes) | 3 | MIT | included |
